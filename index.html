@@ -1722,7 +1722,8 @@ const Dashboard = {
     _getEl("sb-overlay")?.addEventListener("click",    closeSidebar);
 
     document.querySelectorAll(".cp-filter-btn[data-panel]").forEach(btn => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click
+                           ", () => {
         const allowed = ["basic", "delivery", "products"];
         const panel   = btn.dataset.panel;
         if (!allowed.includes(panel)) return;
@@ -1739,7 +1740,7 @@ const Dashboard = {
     _getEl("fs-dec")?.addEventListener("click", () => FontSize.decrease());
     _getEl("fs-inc")?.addEventListener("click", () => FontSize.increase());
 
-    const WA_URL = "https://wa.me/201125393398";
+    const WA_URL = "https://wa.me/20112593398";
     _getEl("wa-btn")?.addEventListener("click",        () => window.open(WA_URL, "_blank", "noopener,noreferrer"));
     _getEl("wa-large-btn")?.addEventListener("click",  () => window.open(WA_URL, "_blank", "noopener,noreferrer"));
   }
