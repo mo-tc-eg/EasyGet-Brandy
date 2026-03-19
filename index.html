@@ -437,6 +437,736 @@ button{cursor:pointer}
 .ov-nil p{font-size:.74rem}
 @media(max-width:768px){.ov-kpi-row{grid-template-columns:repeat(2,1fr)}.ov-2col{grid-template-columns:1fr}.ov-kpi{border-left:none;border-bottom:1px solid var(--bd)}.ov-kpi:last-child{border-bottom:none}}
 @media(max-width:480px){.ov-name{font-size:1.1rem}.ov-logo{width:64px;height:64px}}
+  /* إضافات لتحسين الاستجابة على الموبايل والشاشات الصغيرة جداً */
+@media (max-width: 600px) {
+  /* تعديل عام للهوامش والحشوات */
+  .pw {
+    padding: 12px !important;
+  }
+
+  .view-title {
+    font-size: 1.1rem !important;
+  }
+
+  .view-sub {
+    font-size: 0.7rem !important;
+  }
+
+  .topbar {
+    padding: 0 12px !important;
+    height: 56px !important;
+  }
+
+  .tb-title {
+    font-size: 0.85rem !important;
+  }
+
+  .tb-sub {
+    font-size: 0.65rem !important;
+  }
+
+  .tb-icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .tb-icon-btn .material-icons-round {
+    font-size: 1rem !important;
+  }
+
+  .sync-status {
+    font-size: 0.7rem !important;
+    gap: 3px !important;
+  }
+
+  .sync-status .material-icons-round {
+    font-size: 0.8rem !important;
+  }
+
+  /* بطاقة الترحيب */
+  .welcome-banner {
+    padding: 12px 16px !important;
+    gap: 10px !important;
+  }
+
+  .welcome-avatar {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1rem !important;
+  }
+
+  .welcome-text h2 {
+    font-size: 0.9rem !important;
+  }
+
+  .welcome-text p {
+    font-size: 0.7rem !important;
+  }
+
+  /* تبويبات التحكم */
+  .cp-filters {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 8px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cp-filter-btn {
+    padding: 6px 12px !important;
+    font-size: 0.7rem !important;
+    white-space: nowrap !important;
+  }
+
+  .cp-filter-btn .material-icons-round {
+    font-size: 0.9rem !important;
+  }
+
+  /* شبكات الإدخال */
+  .cf-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .cf-row {
+    padding: 12px !important;
+  }
+
+  .cf-label {
+    font-size: 0.65rem !important;
+  }
+
+  .cf-input {
+    font-size: 0.8rem !important;
+    padding: 8px 10px !important;
+  }
+
+  .cf-save-btn {
+    font-size: 0.7rem !important;
+    padding: 5px 10px !important;
+  }
+
+  .cf-save-btn .material-icons-round {
+    font-size: 0.8rem !important;
+  }
+
+  /* شبكة التواصل الاجتماعي */
+  .cf-social-item {
+    padding: 10px !important;
+  }
+
+  .cf-social-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .cf-social-icon i {
+    font-size: 1rem !important;
+  }
+
+  .cf-social-name {
+    font-size: 0.65rem !important;
+  }
+
+  .cf-social-input {
+    font-size: 0.75rem !important;
+    padding: 6px 8px !important;
+  }
+
+  /* بطاقات المنتجات */
+  .prod-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .prod-card {
+    min-width: 0 !important;
+  }
+
+  .prod-card-img {
+    height: 110px !important;
+  }
+
+  .prod-card-body {
+    padding: 8px 10px !important;
+  }
+
+  .prod-card-name-inp {
+    font-size: 0.8rem !important;
+  }
+
+  .prod-card-price-inp {
+    font-size: 0.75rem !important;
+    width: 70px !important;
+  }
+
+  .prod-card-status {
+    gap: 8px !important;
+  }
+
+  .prod-status-item {
+    font-size: 0.65rem !important;
+  }
+
+  .prod-card-actions {
+    opacity: 1 !important; /* تظهر دائماً على الموبايل */
+  }
+
+  .prod-card-save-btn,
+  .prod-card-edit-btn,
+  .prod-card-del-btn {
+    font-size: 0.7rem !important;
+    padding: 5px !important;
+  }
+
+  .prod-add-card {
+    min-height: 160px !important;
+    padding: 16px !important;
+  }
+
+  .prod-add-card .material-icons-round {
+    font-size: 1.8rem !important;
+  }
+
+  .prod-add-card span {
+    font-size: 0.75rem !important;
+  }
+
+  /* صفحة الإعدادات */
+  .settings-wrap {
+    max-width: 100% !important;
+  }
+
+  .set-card {
+    padding: 12px 16px !important;
+  }
+
+  .set-info {
+    gap: 8px !important;
+  }
+
+  .set-lbl {
+    font-size: 0.8rem !important;
+  }
+
+  .set-desc {
+    font-size: 0.68rem !important;
+  }
+
+  .set-ico {
+    font-size: 1rem !important;
+  }
+
+  .fs-control {
+    gap: 4px !important;
+  }
+
+  .fs-btn {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .fs-val {
+    font-size: 0.75rem !important;
+  }
+
+  /* النافذة المنبثقة (detail) */
+  .detail-box {
+    max-width: 95% !important;
+    max-height: 95vh !important;
+  }
+
+  .detail-cover {
+    height: 160px !important;
+  }
+
+  .detail-inner {
+    padding: 16px !important;
+  }
+
+  .detail-top {
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 12px !important;
+  }
+
+  .detail-logo {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  .detail-name {
+    font-size: 0.95rem !important;
+  }
+
+  .detail-id {
+    font-size: 0.6rem !important;
+  }
+
+  .sec-label {
+    font-size: 0.6rem !important;
+  }
+
+  .desc-block {
+    font-size: 0.75rem !important;
+    padding: 10px !important;
+  }
+
+  .info-cells {
+    grid-template-columns: 1fr !important;
+  }
+
+  .info-cell.wide {
+    grid-column: span 1 !important;
+  }
+
+  .info-cell.span2 {
+    grid-column: span 1 !important;
+  }
+
+  .cell-val {
+    font-size: 0.75rem !important;
+  }
+
+  .social-row {
+    gap: 5px !important;
+  }
+
+  .social-link {
+    font-size: 0.7rem !important;
+    padding: 5px 10px !important;
+  }
+
+  .prod-strip {
+    gap: 6px !important;
+  }
+
+  .prod-thumb {
+    width: 60px !important;
+    height: 60px !important;
+  }
+
+  .prod-item {
+    padding: 6px 10px !important;
+  }
+
+  .prod-item-name {
+    font-size: 0.75rem !important;
+  }
+
+  .prod-item-price {
+    font-size: 0.7rem !important;
+  }
+
+  /* نافذة معاينة المنتج */
+  .prod-preview-card {
+    max-width: 90% !important;
+  }
+
+  .prod-preview-img {
+    height: 140px !important;
+  }
+
+  .prod-preview-body {
+    padding: 14px !important;
+  }
+
+  .prod-preview-name {
+    font-size: 0.9rem !important;
+  }
+
+  .prod-preview-price {
+    font-size: 1rem !important;
+  }
+
+  .ppa-confirm,
+  .ppa-edit {
+    font-size: 0.75rem !important;
+    padding: 8px !important;
+  }
+
+  /* صفحة نظرة عامة المعاد تصميمها */
+  .ov-top {
+    height: 150px !important;
+  }
+
+  .ov-identity {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 0 16px 16px !important;
+    margin-top: -36px !important;
+  }
+
+  .ov-logo {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 14px !important;
+  }
+
+  .ov-namebox {
+    width: calc(100% - 70px) !important;
+  }
+
+  .ov-name {
+    font-size: 1rem !important;
+  }
+
+  .ov-tag {
+    font-size: 0.6rem !important;
+    padding: 2px 7px !important;
+  }
+
+  .ov-open-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 6px !important;
+  }
+
+  .ov-desc-strip {
+    padding: 0 16px 14px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .ov-kpi-row {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  .ov-kpi {
+    padding: 12px 10px !important;
+  }
+
+  .ov-kpi-val {
+    font-size: 0.9rem !important;
+  }
+
+  .ov-kpi-lbl {
+    font-size: 0.55rem !important;
+  }
+
+  .ov-body {
+    padding: 16px !important;
+  }
+
+  .ov-2col {
+    gap: 12px !important;
+  }
+
+  .ov-sec-hd {
+    padding: 10px 12px !important;
+  }
+
+  .ov-sec-title {
+    font-size: 0.7rem !important;
+  }
+
+  .ov-sec-body {
+    padding: 12px !important;
+  }
+
+  .ov-row2 {
+    padding: 7px 0 !important;
+  }
+
+  .ov-row2-k {
+    font-size: 0.65rem !important;
+  }
+
+  .ov-row2-v {
+    font-size: 0.7rem !important;
+    max-width: 50% !important;
+  }
+
+  .ov-chip {
+    font-size: 0.7rem !important;
+    padding: 6px 12px !important;
+  }
+
+  .ov-pitem {
+    padding: 6px 8px !important;
+  }
+
+  .ov-pitem-name {
+    font-size: 0.7rem !important;
+  }
+
+  .ov-pitem-price {
+    font-size: 0.68rem !important;
+  }
+
+  .ov-ptile {
+    border-radius: 8px !important;
+  }
+
+  /* نافذة القفل */
+  .lock-timer-wrap {
+    padding: 4px 12px !important;
+  }
+
+  .lock-timer {
+    font-size: 0.9rem !important;
+  }
+
+  /* توست */
+  .toast-hub {
+    bottom: 16px !important;
+    left: 16px !important;
+    right: 16px !important;
+  }
+
+  .toast {
+    max-width: 100% !important;
+    font-size: 0.75rem !important;
+    padding: 8px 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* تحسينات إضافية للشاشات الصغيرة جداً */
+  .auth-layout {
+    border-radius: var(--r2) !important;
+  }
+
+  .auth-brand-pane {
+    padding: 20px 16px !important;
+    min-height: 120px !important;
+  }
+
+  .auth-brand-headline {
+    font-size: 1.1rem !important;
+  }
+
+  .auth-brand-logo {
+    width: 44px !important;
+    height: 44px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .auth-brand-logo img {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .auth-form-pane {
+    padding: 20px 16px !important;
+  }
+
+  .auth-form-title {
+    font-size: 1rem !important;
+  }
+
+  .auth-form-sub {
+    font-size: 0.7rem !important;
+  }
+
+  .ig input {
+    font-size: 0.8rem !important;
+    padding: 10px 0 !important;
+  }
+
+  .btn {
+    padding: 10px 16px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .mob-header {
+    padding: 0 12px !important;
+  }
+
+  .icon-btn {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .icon-btn .material-icons-round {
+    font-size: 1rem !important;
+  }
+
+  .sb-av {
+    width: 34px !important;
+    height: 34px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .sb-uname {
+    font-size: 0.75rem !important;
+  }
+
+  .sb-uid {
+    font-size: 0.6rem !important;
+  }
+
+  .nav-btn {
+    font-size: 0.75rem !important;
+    padding: 8px !important;
+  }
+
+  .nav-btn .material-icons-round {
+    font-size: 0.9rem !important;
+  }
+
+  .logout-btn {
+    font-size: 0.75rem !important;
+    padding: 8px !important;
+  }
+
+  .logout-btn .material-icons-round {
+    font-size: 0.9rem !important;
+  }
+
+  .pw {
+    padding: 8px !important;
+  }
+
+  .welcome-banner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .welcome-avatar {
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .cp-filter-btn {
+    padding: 5px 10px !important;
+    font-size: 0.65rem !important;
+  }
+
+  .prod-card-img {
+    height: 100px !important;
+  }
+
+  .prod-card-body {
+    padding: 6px 8px !important;
+  }
+
+  .prod-card-name-inp {
+    font-size: 0.75rem !important;
+  }
+
+  .prod-card-price-inp {
+    font-size: 0.7rem !important;
+    width: 60px !important;
+  }
+
+  .prod-status-item {
+    font-size: 0.6rem !important;
+  }
+
+  .prod-card-save-btn,
+  .prod-card-edit-btn,
+  .prod-card-del-btn {
+    padding: 4px !important;
+  }
+
+  .prod-add-card {
+    min-height: 140px !important;
+    padding: 12px !important;
+  }
+
+  .prod-add-card .material-icons-round {
+    font-size: 1.5rem !important;
+  }
+
+  .prod-add-card span {
+    font-size: 0.7rem !important;
+  }
+
+  .detail-cover {
+    height: 140px !important;
+  }
+
+  .detail-logo {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  .detail-name {
+    font-size: 0.85rem !important;
+  }
+
+  .ov-logo {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 12px !important;
+  }
+
+  .ov-name {
+    font-size: 0.9rem !important;
+  }
+
+  .ov-kpi {
+    padding: 8px 6px !important;
+  }
+
+  .ov-kpi-val {
+    font-size: 0.8rem !important;
+  }
+
+  .ov-kpi-lbl {
+    font-size: 0.5rem !important;
+  }
+
+  .ov-body {
+    padding: 12px !important;
+  }
+
+  .ov-row2-k {
+    font-size: 0.6rem !important;
+  }
+
+  .ov-row2-v {
+    font-size: 0.65rem !important;
+  }
+
+  .deactivated-card {
+    padding: 24px 16px !important;
+  }
+
+  .deactivated-card h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .deactivated-card p {
+    font-size: 0.8rem !important;
+  }
+
+  .whatsapp-large {
+    font-size: 0.9rem !important;
+    padding: 10px 20px !important;
+  }
+}
+
+/* تحسين لشاشات أقل من 360px */
+@media (max-width: 360px) {
+  .ov-identity {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .ov-namebox {
+    width: 100% !important;
+  }
+
+  .ov-kpi-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .ov-kpi {
+    border-left: none !important;
+    border-bottom: 1px solid var(--bd) !important;
+  }
+
+  .ov-kpi:last-child {
+    border-bottom: none !important;
+  }
+
+  .prod-card-actions {
+    flex-wrap: wrap !important;
+  }
+
+  .prod-card-save-btn {
+    width: 100% !important;
+  }
+}
 </style>
 </head>
 <body>
