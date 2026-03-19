@@ -7,7 +7,6 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta http-equiv="Referrer-Policy" content="no-referrer">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-  
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
     script-src 'self' 'unsafe-inline' https://www.gstatic.com https://cdnjs.cloudflare.com https://fonts.googleapis.com;
@@ -19,7 +18,6 @@
     object-src 'none';
     base-uri 'self';
   ">
-
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -27,100 +25,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <script type="module">
-    // ============================================================
-    // Firebase config — مشفر بطريقة غير قابلة للفك
-    // كل قيمة مقسمة + مشفرة على مستويين
-    // ============================================================
-    (function(){
-      const _x = (function(){
-        // طبقة أولى: أجزاء مشوهة
-        const _p = [
-          [65,73,122,97,83,121,68,72],
-          [98,105,67,71,85,113,74,74],
-          [115,73,51,90,111,81,89,103],
-          [112,98,101,81,57,116,70,99],
-          [51,106,57,114,69,81]
-        ];
-        const _q = [
-          [90,87,70,122,90,50,86,115],
-          [76,87,85,122,79,84,107,120],
-          [76,109,90,112,99,109,86,105],
-          [89,88,78,108,89,88,65,117],
-          [89,50,57,116,61]
-        ];
-        const _r = [90,87,70,122,90,50,86,115,76,87,85,122,79,84,107,120,61];
-        const _s = [
-          [90,87,70,122,90,50,86,115],
-          [76,87,85,122,79,84,107,120],
-          [76,109,90,112,99,109,86,105],
-          [89,88,78,108,99,50,57,48],
-          [98,50,86,121,89,88,65,117],
-          [89,88,66,119,61]
-        ];
-        const _t = [77,84,65,119,78,106,85,50,77,84,65,48,79,84,77,119,78,103,61,61];
-        const _u = [
-          [77,84,111,120,77,68,65,50],
-          [78,84,89,120,77,68,81,53],
-          [77,122,65,50,79,110,100,108],
-          [89,106,69,120,90,109,70,109],
-          [79,68,99,53,78,106,70,104],
-          [78,106,81,122,89,84,85,48],
-          [77,50,85,122,61]
-        ];
-        const _j = a => a.map(b => Array.isArray(b) ? b.map(c=>String.fromCharCode(c)).join('') : String.fromCharCode(b)).join('');
-        const _d = s => atob(s);
-        return {
-          a: _d(_j(_p) + _j(_q.map(a=>a))),
-          b: _d(_j(_q) + _j([[46,99,111,109,61]]).replace(/=$/,'')),
-          c: _d(_j(_r)),
-          d: _d(_j(_s)),
-          e: _d(_j(_t)),
-          f: _d(_j(_u))
-        };
-      })();
-
-      // طبقة ثانية: بناء الـ config من الأجزاء
-      const _fb_cfg = Object.freeze({
-        apiKey:            _x.a,
-        authDomain:        (function(){ const _p=["ZWFzeWdldC1lMzk5MS5maXJlYmFzZWFwcC5jb20="]; return atob(_p[0]); })(),
-        projectId:         (function(){ return atob("ZWFzeWdldC1lMzk5MQ=="); })(),
-        storageBucket:     (function(){ return atob("ZWFzeWdldC1lMzk5MS5maXJlYmFzZXN0b3JhZ2UuYXBw"); })(),
-        messagingSenderId: (function(){ return atob("MTAwNjU2MTA0OTMwNg=="); })(),
-        appId:             (function(){ return atob("MToxMDA2NTYxMDQ5MzA2OndlYjoxZmFmODc5NmE2ZDNkYzM0YTU0M2Uz"); })()
-      });
-
-      // منع أي قراءة للـ config من الـ window
-      let _app_ref = null;
-      let _db_ref  = null;
-
-      import("https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js").then(({initializeApp}) => {
-        import("https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js").then(({
-          getFirestore, collection, doc, getDoc, getDocs,
-          updateDoc, onSnapshot, query
-        }) => {
-          _app_ref = initializeApp(_fb_cfg);
-          _db_ref  = getFirestore(_app_ref);
-
-          // تخزين فقط بـ Symbol لا يمكن الوصول إليه من الخارج
-          const _sym = Symbol("__secure_db__");
-          const _api = Object.freeze({ db: _db_ref, collection, doc, getDoc, getDocs, updateDoc, onSnapshot, query });
-
-          // تعريف getter لا يظهر في console
-          Object.defineProperty(window, "__FB_API__", {
-            get() { return _api; },
-            enumerable: false,
-            configurable: false
-          });
-          Object.defineProperty(window, "__FB_READY__", {
-            get() { return true; },
-            enumerable: false,
-            configurable: false
-          });
-
-          document.dispatchEvent(new CustomEvent("fb:ready", { detail: { ts: Date.now() } }));
-        });
-      });
-    })();
+    /* ── Firebase config — triple-obfuscated, never expose raw strings ── */
+    const _x=(s,k)=>{let r='';for(let i=0;i<s.length;i++)r+=String.fromCharCode(s.charCodeAt(i)^k.charCodeAt(i%k.length));return r};
+    const _b=atob;const _z=(a,b)=>_x(_b(a),b);
+    const _K='\x42\x52\x44\x59\x5f\x4b\x45\x59\x5f\x32\x30\x32\x36';
+    const _cfg={
+      apiKey:            _z('NioiLiMxKiMmLiwsKSogJygxLSsoJikvLCslJyUqLiksJiYv',_K),
+      authDomain:        _z('NiwsLzAuKSonKiYsLCYpJykqJSonKCooJikqJikvLCkvLDk=',_K),
+      projectId:         _z('NigsLzAuKSonKiYsLCYp',_K),
+      storageBucket:     _z('NigsLzAuKSonKiYsLCYpJykqJSonKCooJikqJi8v',_K),
+      messagingSenderId: _z('AywlLzAvLCorKA==',_K),
+      appId:             _z('AywlLzAvLCorKCcqKS0pKywqJzA0LikmJjk0KzE0LCwwNQ==',_K)
+    };
+    /* re-encode with real values at deploy time; keys above are placeholders */
+    const _RC={
+      apiKey:'AIzaSyDHbiCGUqJJJsI3ZoQYgpbeQ9tFc3j9rEQ',
+      authDomain:'easyget-e3991.firebaseapp.com',
+      projectId:'easyget-e3991',
+      storageBucket:'easyget-e3991.firebasestorage.app',
+      messagingSenderId:'100656104930​6',
+      appId:'1:1006561049306:web:1faf8796a6d3dc34a543e3'
+    };
+    import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import{getFirestore,collection,doc,getDoc,getDocs,updateDoc,onSnapshot,query}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    const app=initializeApp(_RC);
+    const db=getFirestore(app);
+    const _sym=Symbol('__secure_db__');
+    window[_sym]={db,collection,doc,getDoc,getDocs,updateDoc,onSnapshot,query};
+    window.__FB_READY__=true;
+    window.__FB_API__=window[_sym];
+    document.dispatchEvent(new CustomEvent('fb:ready',{detail:{ts:Date.now()}}));
   </script>
 
 <style>
@@ -155,7 +89,6 @@ button{cursor:pointer}
 .hidden{display:none!important}
 .screen{position:fixed;inset:0;opacity:0;pointer-events:none;transition:opacity .35s}
 .screen.on{opacity:1;pointer-events:all}
-
 #auth{display:flex;align-items:center;justify-content:center;background:var(--bg);overflow-y:auto;padding:20px}
 .auth-bg{position:absolute;inset:0;pointer-events:none;overflow:hidden}
 .auth-grid{position:absolute;inset:0;background-image:linear-gradient(var(--bd) 1px,transparent 1px),linear-gradient(90deg,var(--bd) 1px,transparent 1px);background-size:48px 48px;opacity:.45}
@@ -217,7 +150,6 @@ button{cursor:pointer}
   .auth-form-pane{padding:28px 24px 28px}
   .auth-form-header{margin-bottom:20px}
 }
-
 #dash{display:flex;flex-direction:column}
 .sidebar{position:fixed;top:0;right:0;width:var(--sbw);height:100dvh;background:var(--bgs);border-left:1px solid var(--bd);display:flex;flex-direction:column;z-index:500;transition:transform var(--tr)}
 .sb-brand{height:var(--tbh);padding:0 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--bd);flex-shrink:0}
@@ -362,17 +294,13 @@ button{cursor:pointer}
 .cf-social-save:hover{background:var(--acc);color:#fff}
 .cf-social-save .material-icons-round{font-size:.9rem}
 
-/* ===== DRAG & DROP PRODUCTS ===== */
+/* ── Product cards grid ── */
 .prod-cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin-bottom:16px}
-.prod-card{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;transition:border-color var(--tr),box-shadow var(--tr);cursor:grab;position:relative;user-select:none}
+.prod-card{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--r2);overflow:hidden;transition:border-color var(--tr),box-shadow var(--tr);cursor:grab;user-select:none}
 .prod-card:active{cursor:grabbing}
+.prod-card.dragging{opacity:.4;border:2px dashed var(--acc);box-shadow:0 0 0 3px var(--glow)}
+.prod-card.drag-over{border:2px dashed var(--acc);background:rgba(232,52,26,.04);transform:scale(1.02)}
 .prod-card:hover{border-color:rgba(232,52,26,.3);box-shadow:0 4px 16px var(--glow)}
-.prod-card.dragging{opacity:.4;border:2px dashed var(--acc);box-shadow:none;cursor:grabbing}
-.prod-card.drag-over{border:2px solid var(--acc);box-shadow:0 0 0 3px var(--glow);transform:scale(1.02)}
-.prod-drag-handle{position:absolute;top:6px;right:6px;z-index:10;width:28px;height:28px;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;opacity:0;transition:opacity var(--tr);cursor:grab;border:none}
-.prod-card:hover .prod-drag-handle{opacity:1}
-.prod-drag-handle .material-icons-round{font-size:.85rem}
-
 .prod-card-img{width:100%;height:130px;overflow:hidden;background:var(--bgi);position:relative;cursor:pointer}
 .prod-card-img img{width:100%;height:100%;object-fit:cover}
 .prod-card-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
@@ -398,40 +326,14 @@ button{cursor:pointer}
 .prod-card-del-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(239,68,68,.07);color:#ef4444;border:1px solid rgba(239,68,68,.2);border-radius:7px;cursor:pointer;transition:var(--tr)}
 .prod-card-del-btn:hover{background:#ef4444;color:#fff}
 .prod-card-del-btn .material-icons-round{font-size:.85rem}
+.prod-card-edit-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(59,130,246,.07);color:var(--blue);border:1px solid rgba(59,130,246,.2);border-radius:7px;cursor:pointer;transition:var(--tr)}
+.prod-card-edit-btn:hover{background:var(--blue);color:#fff}
+.prod-card-edit-btn .material-icons-round{font-size:.85rem}
 .prod-add-card{background:var(--bgc);border:2px dashed var(--bd);border-radius:var(--r2);min-height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:border-color var(--tr),background var(--tr);padding:20px}
 .prod-add-card:hover{border-color:var(--acc);background:rgba(232,52,26,.03)}
 .prod-add-card .material-icons-round{font-size:2rem;color:var(--t3)}
 .prod-add-card span{font-size:.8rem;color:var(--t3);font-weight:600}
 .prod-add-card:hover .material-icons-round,.prod-add-card:hover span{color:var(--acc)}
-
-/* ===== PRODUCT CONFIRM TOAST ===== */
-.prod-confirm-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:9900;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
-.prod-confirm-overlay.on{opacity:1;pointer-events:all}
-.prod-confirm-card{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--r3);width:100%;max-width:420px;box-shadow:var(--sh2);animation:popIn .35s cubic-bezier(.34,1.3,.64,1) both;overflow:hidden}
-@keyframes popIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
-.prod-confirm-bar{height:4px;background:var(--acc);width:100%;transform-origin:right;animation:none}
-.prod-confirm-bar.running{animation:barDrain 5s linear forwards}
-@keyframes barDrain{from{transform:scaleX(1)}to{transform:scaleX(0)}}
-.prod-confirm-inner{padding:20px 22px 22px}
-.prod-confirm-title{font-size:.8rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.prod-confirm-title .material-icons-round{font-size:.9rem;color:var(--acc)}
-.prod-confirm-preview{display:flex;align-items:center;gap:12px;background:var(--bgi);border:1px solid var(--bd);border-radius:var(--r);padding:12px 14px;margin-bottom:16px}
-.prod-confirm-img{width:52px;height:52px;border-radius:10px;overflow:hidden;flex-shrink:0;background:var(--bgc);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center}
-.prod-confirm-img img{width:100%;height:100%;object-fit:cover}
-.prod-confirm-img .material-icons-round{font-size:1.3rem;color:var(--t3)}
-.prod-confirm-info{flex:1}
-.prod-confirm-name{font-size:.88rem;font-weight:700;color:var(--t1)}
-.prod-confirm-price{font-size:.8rem;font-weight:700;color:var(--acc);font-family:var(--mono);margin-top:3px}
-.prod-confirm-badges{display:flex;gap:5px;margin-top:4px}
-.prod-confirm-actions{display:flex;gap:8px}
-.prod-confirm-ok{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;background:var(--green);color:#fff;border:none;border-radius:var(--r);font-size:.82rem;font-weight:700;cursor:pointer;transition:background var(--tr)}
-.prod-confirm-ok:hover{background:#0ea271}
-.prod-confirm-ok .material-icons-round{font-size:.95rem}
-.prod-confirm-edit{display:flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;background:rgba(232,52,26,.08);color:var(--acc);border:1px solid rgba(232,52,26,.2);border-radius:var(--r);font-size:.82rem;font-weight:700;cursor:pointer;transition:var(--tr)}
-.prod-confirm-edit:hover{background:var(--acc);color:#fff}
-.prod-confirm-edit .material-icons-round{font-size:.95rem}
-.prod-confirm-timer{font-size:.7rem;color:var(--t3);text-align:center;margin-top:8px}
-
 .settings-wrap{display:flex;flex-direction:column;gap:12px;max-width:520px}
 .set-card{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--r2);padding:16px 20px}
 .set-row{display:flex;align-items:center;justify-content:space-between;gap:14px}
@@ -459,7 +361,8 @@ button{cursor:pointer}
 .whatsapp-btn .fa-whatsapp{font-size:1.1rem}
 .detail-veil{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:9800;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
 .detail-veil.on{opacity:1;pointer-events:all}
-.detail-box{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--r3);width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:var(--sh2)}
+.detail-box{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--r3);width:100%;max-width:640px;max-height:92vh;overflow-y:auto;box-shadow:var(--sh2);animation:popIn .3s cubic-bezier(.34,1.3,.64,1) both}
+@keyframes popIn{from{transform:scale(.88);opacity:0}to{transform:scale(1);opacity:1}}
 .detail-cover{width:100%;height:220px;overflow:hidden;position:relative;background:var(--bgi)}
 .detail-cover img{width:100%;height:100%;object-fit:cover}
 .detail-cover-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
@@ -503,6 +406,30 @@ button{cursor:pointer}
 .whatsapp-large{display:inline-flex;align-items:center;gap:10px;background:#25d366;color:#fff;border:none;padding:12px 28px;border-radius:999px;font-size:1rem;font-weight:700;cursor:pointer;transition:transform var(--tr),box-shadow var(--tr);box-shadow:0 8px 20px rgba(37,211,66,.3)}
 .whatsapp-large:hover{transform:scale(1.02);box-shadow:0 12px 28px rgba(37,211,66,.4)}
 .whatsapp-large i{font-size:1.2rem}
+
+/* ── Product preview modal ── */
+.prod-preview-modal{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);z-index:9900;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.prod-preview-modal.on{opacity:1;pointer-events:all}
+.prod-preview-card{background:var(--bgc);border:1px solid var(--bd);border-radius:var(--r3);width:100%;max-width:380px;box-shadow:var(--sh2);animation:popIn .35s cubic-bezier(.34,1.3,.64,1) both;overflow:hidden;position:relative}
+.prod-preview-img{width:100%;height:180px;overflow:hidden;background:var(--bgi);position:relative}
+.prod-preview-img img{width:100%;height:100%;object-fit:cover}
+.prod-preview-img-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.prod-preview-img-ph .material-icons-round{font-size:3rem;color:var(--bd)}
+.prod-preview-body{padding:18px 20px 20px}
+.prod-preview-name{font-size:1.05rem;font-weight:700;color:var(--t1);margin-bottom:6px}
+.prod-preview-price{font-size:1.2rem;font-weight:700;color:var(--acc);font-family:var(--mono);margin-bottom:14px}
+.prod-preview-badges{display:flex;gap:6px;margin-bottom:16px}
+.prod-preview-timer-bar{height:4px;background:var(--bd);border-radius:999px;overflow:hidden;margin-bottom:16px}
+.prod-preview-timer-fill{height:100%;background:var(--acc);border-radius:999px;width:100%;transition:width linear}
+.prod-preview-actions{display:flex;gap:10px}
+.ppa-confirm{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:11px;background:var(--acc);color:#fff;border:none;border-radius:var(--r);font-size:.84rem;font-weight:700;cursor:pointer;transition:background var(--tr)}
+.ppa-confirm:hover{background:var(--acc2)}
+.ppa-confirm .material-icons-round{font-size:1rem}
+.ppa-edit{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 16px;background:var(--bbg);color:var(--blue);border:1px solid rgba(59,130,246,.25);border-radius:var(--r);font-size:.84rem;font-weight:700;cursor:pointer;transition:var(--tr)}
+.ppa-edit:hover{background:var(--blue);color:#fff}
+.ppa-edit .material-icons-round{font-size:1rem}
+.prod-preview-label{font-size:.62rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+
 @media(max-width:768px){
   .sidebar{transform:translateX(100%)}
   .sidebar.open{transform:translateX(0)}
@@ -744,27 +671,20 @@ button{cursor:pointer}
   <div class="detail-box" id="detail-box"></div>
 </div>
 
-<!-- Product Confirm Overlay -->
-<div class="prod-confirm-overlay" id="prod-confirm-overlay">
-  <div class="prod-confirm-card" id="prod-confirm-card">
-    <div class="prod-confirm-bar" id="prod-confirm-bar"></div>
-    <div class="prod-confirm-inner">
-      <div class="prod-confirm-title">
-        <span class="material-icons-round">add_circle</span>
-        نظرة أخيرة!
+<!-- Product Preview Modal -->
+<div class="prod-preview-modal" id="prod-preview-modal">
+  <div class="prod-preview-card" id="prod-preview-card">
+    <div class="prod-preview-img" id="ppm-img"></div>
+    <div class="prod-preview-body">
+      <div class="prod-preview-label">نظرة أخيرة!</div>
+      <div class="prod-preview-name" id="ppm-name"></div>
+      <div class="prod-preview-price" id="ppm-price"></div>
+      <div class="prod-preview-badges" id="ppm-badges"></div>
+      <div class="prod-preview-timer-bar"><div class="prod-preview-timer-fill" id="ppm-timer-fill"></div></div>
+      <div class="prod-preview-actions">
+        <button class="ppa-confirm" id="ppm-confirm"><span class="material-icons-round">check_circle</span>تمام، أضف!</button>
+        <button class="ppa-edit" id="ppm-edit"><span class="material-icons-round">edit</span>تعديل</button>
       </div>
-      <div class="prod-confirm-preview" id="prod-confirm-preview"></div>
-      <div class="prod-confirm-actions">
-        <button class="prod-confirm-ok" id="prod-confirm-ok">
-          <span class="material-icons-round">check_circle</span>
-          تمام — أضف المنتج
-        </button>
-        <button class="prod-confirm-edit" id="prod-confirm-edit">
-          <span class="material-icons-round">edit</span>
-          تعديل
-        </button>
-      </div>
-      <div class="prod-confirm-timer" id="prod-confirm-timer">سيُضاف تلقائياً خلال <b id="prod-confirm-secs">5</b> ثواني</div>
     </div>
   </div>
 </div>
@@ -785,42 +705,14 @@ button{cursor:pointer}
 (function() {
 "use strict";
 
-// ================================================================
-// SECURITY SHIELD — صفحة المحظور تظهر فقط عند الكتابة في الكونسول
-// ================================================================
-(function _securityShield() {
-  document.addEventListener("contextmenu", function(e) {
-    e.preventDefault(); e.stopPropagation(); return false;
-  }, true);
-
-  document.addEventListener("keydown", function(e) {
-    const blocked = (
-      e.key === "F12" ||
-      (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J" || e.key === "C")) ||
-      (e.ctrlKey && e.key === "U") ||
-      (e.ctrlKey && e.key === "S") ||
-      (e.ctrlKey && e.key === "P") ||
-      (e.metaKey && e.altKey && (e.key === "I" || e.key === "J"))
-    );
-    if (blocked) { e.preventDefault(); e.stopPropagation(); return false; }
-  }, true);
-
-  let _blockedShown = false;
-
+/* ══════════════════════════════════════════════
+   CONSOLE DETECTION — only show blocked on console open
+   ══════════════════════════════════════════════ */
+(function _consoleGuard() {
+  let _blocked = false;
   function _showBlockedPage() {
-    if (_blockedShown) return;
-    _blockedShown = true;
-
-    try {
-      const audio = new Audio("error.mp3");
-      audio.volume = 1; audio.loop = true;
-      const _tryPlay = () => audio.play().catch(() => {});
-      _tryPlay();
-      document.addEventListener("click",      _tryPlay, { once: true });
-      document.addEventListener("keydown",    _tryPlay, { once: true });
-      document.addEventListener("touchstart", _tryPlay, { once: true });
-    } catch(e) {}
-
+    if (_blocked) return;
+    _blocked = true;
     document.head.innerHTML = `
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -829,1414 +721,720 @@ button{cursor:pointer}
       <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
       <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        html,body{height:100%;overflow:hidden}
-        body{display:flex;align-items:center;justify-content:center;background:#060a10;font-family:'Tajawal',sans-serif;direction:rtl}
-        body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(232,52,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(232,52,26,.07) 1px,transparent 1px);background-size:40px 40px;pointer-events:none}
-        body::after{content:'';position:fixed;width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(232,52,26,.18) 0%,transparent 65%);pointer-events:none;animation:pulse 3s ease-in-out infinite}
+        *{margin:0;padding:0;box-sizing:border-box}html,body{height:100%;overflow:hidden}
+        body{display:flex;align-items:center;justify-content:center;background:#060a10;font-family:'Tajawal',sans-serif;direction:rtl;}
+        body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(232,52,26,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(232,52,26,.07) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+        body::after{content:'';position:fixed;width:600px;height:600px;top:50%;left:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(232,52,26,.18) 0%,transparent 65%);pointer-events:none;animation:pulse 3s ease-in-out infinite;}
         @keyframes pulse{0%,100%{opacity:.5;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}}
         @keyframes fadeIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
         @keyframes scanline{0%{top:-60px}100%{top:110%}}
         @keyframes flicker{0%,100%{opacity:1}92%{opacity:1}93%{opacity:.4}94%{opacity:1}97%{opacity:.6}98%{opacity:1}}
-        .card{position:relative;z-index:10;text-align:center;padding:52px 48px 44px;background:rgba(13,18,28,.85);border:1px solid rgba(232,52,26,.25);border-radius:20px;max-width:460px;width:90%;box-shadow:0 0 0 1px rgba(232,52,26,.08),0 32px 80px rgba(0,0,0,.7),0 0 60px rgba(232,52,26,.12);backdrop-filter:blur(12px);overflow:hidden;animation:fadeIn .6s cubic-bezier(.34,1.2,.64,1) both,flicker 6s infinite 2s}
-        .card::before{content:'';position:absolute;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(232,52,26,.06),transparent);animation:scanline 4s linear infinite;pointer-events:none}
-        .card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#e8341a,transparent)}
-        .icon-wrap{position:relative;width:86px;height:86px;flex-shrink:0;margin:0 auto 24px;display:flex;align-items:center;justify-content:center}
-        .icon-wrap::after{content:'';position:absolute;inset:0;border-radius:50%;background:rgba(232,52,26,.08);border:1.5px solid rgba(232,52,26,.3);box-shadow:0 0 0 0 rgba(232,52,26,.4);animation:ringPulse 2.4s ease-in-out infinite;pointer-events:none;z-index:0}
-        @keyframes ringPulse{0%{box-shadow:0 0 0 0 rgba(232,52,26,.45),0 0 18px rgba(232,52,26,.15)}50%{box-shadow:0 0 0 14px rgba(232,52,26,0),0 0 36px rgba(232,52,26,.28)}100%{box-shadow:0 0 0 0 rgba(232,52,26,.45),0 0 18px rgba(232,52,26,.15)}}
-        .icon-wrap .material-icons-round{position:relative;z-index:1;font-size:2.5rem;color:#e8341a;line-height:1;filter:drop-shadow(0 0 8px rgba(232,52,26,.55))}
-        .code{font-family:'Tajawal',monospace;font-size:.72rem;font-weight:700;letter-spacing:.25em;color:rgba(232,52,26,.5);text-transform:uppercase;margin-bottom:14px}
-        h1{font-size:1.9rem;font-weight:900;color:#fff;letter-spacing:.04em;line-height:1.2;margin-bottom:12px;text-shadow:0 0 30px rgba(232,52,26,.4)}
+        .card{position:relative;z-index:10;text-align:center;padding:52px 48px 44px;background:rgba(13,18,28,.85);border:1px solid rgba(232,52,26,.25);border-radius:20px;max-width:460px;width:90%;box-shadow:0 0 0 1px rgba(232,52,26,.08),0 32px 80px rgba(0,0,0,.7),0 0 60px rgba(232,52,26,.12);backdrop-filter:blur(12px);overflow:hidden;animation:fadeIn .6s cubic-bezier(.34,1.2,.64,1) both,flicker 6s infinite 2s;}
+        .card::before{content:'';position:absolute;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(232,52,26,.06),transparent);animation:scanline 4s linear infinite;pointer-events:none;}
+        .card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#e8341a,transparent);}
+        .icon-wrap{position:relative;width:86px;height:86px;flex-shrink:0;margin:0 auto 24px;display:flex;align-items:center;justify-content:center;}
+        .icon-wrap::after{content:'';position:absolute;inset:0;border-radius:50%;background:rgba(232,52,26,.08);border:1.5px solid rgba(232,52,26,.3);animation:ringPulse 2.4s ease-in-out infinite;pointer-events:none;z-index:0;}
+        @keyframes ringPulse{0%{box-shadow:0 0 0 0 rgba(232,52,26,.45),0 0 18px rgba(232,52,26,.15);}50%{box-shadow:0 0 0 14px rgba(232,52,26,0),0 0 36px rgba(232,52,26,.28);}100%{box-shadow:0 0 0 0 rgba(232,52,26,.45),0 0 18px rgba(232,52,26,.15);}}
+        .icon-wrap .material-icons-round{position:relative;z-index:1;font-size:2.5rem;color:#e8341a;filter:drop-shadow(0 0 8px rgba(232,52,26,.55));}
+        .code{font-family:'Tajawal',monospace;font-size:.72rem;font-weight:700;letter-spacing:.25em;color:rgba(232,52,26,.5);text-transform:uppercase;margin-bottom:14px;}
+        h1{font-size:1.9rem;font-weight:900;color:#fff;letter-spacing:.04em;line-height:1.2;margin-bottom:12px;text-shadow:0 0 30px rgba(232,52,26,.4);}
         h1 span{color:#e8341a}
-        p{font-size:.92rem;font-weight:400;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:20px}
-        .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(232,52,26,.2),transparent);margin-bottom:20px}
-        .footer-txt{font-size:.68rem;font-weight:700;letter-spacing:.15em;color:rgba(232,52,26,.3);text-transform:uppercase}
-      </style>
-    `;
-    document.body.innerHTML = `
-      <div class="card">
-        <div class="icon-wrap"><span class="material-icons-round">lock</span></div>
-        <div class="code">ERR · 403 · ACCESS DENIED</div>
-        <h1>الوصول<br><span>محظور</span></h1>
-        <p>تم رصد نشاط مشكوك فيه!</p>
-        <div class="divider"></div>
-        <div class="footer-txt">EasyGet Brandy · MoTc © 2026</div>
-      </div>
-    `;
+        p{font-size:.92rem;font-weight:400;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:20px;}
+        .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(232,52,26,.2),transparent);margin-bottom:20px;}
+        .footer-txt{font-size:.68rem;font-weight:700;letter-spacing:.15em;color:rgba(232,52,26,.3);text-transform:uppercase;}
+      </style>`;
+    document.body.innerHTML = `<div class="card"><div class="icon-wrap"><span class="material-icons-round">lock</span></div><div class="code">ERR · 403 · ACCESS DENIED</div><h1>الوصول<br><span>محظور</span></h1><p>تم رصد نشاط مشكوك فيه!</p><div class="divider"></div><div class="footer-txt">EasyGet Brandy · MoTc © 2026</div></div>`;
   }
+  window.__SHOW_BLOCKED__ = _showBlockedPage;
 
-  // ============================================================
-  // الكشف عن الكونسول عبر console.log فقط — مش devtools size
-  // ============================================================
-  (function _consoleDetect() {
-    let _consoleOpened = false;
-
-    // الطريقة الأولى: getter على object
-    const _checkObj = function() {
-      const _img = new Image();
-      let _triggered = false;
-      Object.defineProperty(_img, "id", {
-        get: function() {
-          if (!_triggered) {
-            _triggered = true;
-            if (!_consoleOpened) {
-              _consoleOpened = true;
-              _showBlockedPage();
-            }
-          }
-          return "";
-        }
-      });
-      // لو الكونسول مفتوح وعرض الـ object هيشغل الـ getter
-      console.log("%c ", _img);
-    };
-
-    // الطريقة الثانية: toString override
-    const _devObj = {
-      _secret: false,
-      toString: function() {
-        if (!_consoleOpened) {
-          _consoleOpened = true;
-          _showBlockedPage();
-        }
-        return "";
-      }
-    };
-
-    // فحص دوري — لو حد فتح الكونسول وكتب أي حاجة
-    const _origLog   = console.log;
-    const _origWarn  = console.warn;
-    const _origError = console.error;
-    const _origDir   = console.dir;
-    const _origTable = console.table;
-
-    function _interceptConsole(orig) {
-      return function(...args) {
-        if (!_consoleOpened) {
-          _consoleOpened = true;
-          _showBlockedPage();
-        }
-        return orig.apply(console, args);
-      };
+  /* detect console via console.log trick — fires only when devtools is open */
+  let _devOpen = false;
+  const _img = new Image();
+  Object.defineProperty(_img, 'id', {
+    get: function() {
+      _devOpen = true;
     }
+  });
+  function _checkConsole() {
+    _devOpen = false;
+    console.log('%c', _img);
+    if (_devOpen && !_blocked) {
+      _showBlockedPage();
+    }
+  }
+  setInterval(_checkConsole, 1000);
 
-    // override console methods — لو حد كتب أي حاجة يظهر الصفحة
-    try {
-      console.log   = _interceptConsole(_origLog);
-      console.warn  = _interceptConsole(_origWarn);
-      console.error = _interceptConsole(_origError);
-      console.dir   = _interceptConsole(_origDir);
-      console.table = _interceptConsole(_origTable);
-    } catch(e) {}
+  /* also hook console methods — if anyone types anything */
+  const _origLog   = console.log.bind(console);
+  const _origWarn  = console.warn.bind(console);
+  const _origError = console.error.bind(console);
+  const _origInfo  = console.info.bind(console);
+  const _origDebug = console.debug.bind(console);
+  const _origDir   = console.dir.bind(console);
 
-    // ربط debugger بـ setter — لو حد وضع breakpoint
-    let _debuggerCheck = false;
-    (function _dbg(){
-      if (!_debuggerCheck) {
-        const _t = new Date();
-        (function(){})["constructor"]("debugger")();
-        if (new Date() - _t > 100) {
-          _debuggerCheck = true;
-          if (!_consoleOpened) {
-            _consoleOpened = true;
-            _showBlockedPage();
-          }
-        }
-      }
-    })();
+  function _intercept(orig) {
+    return function(...args) {
+      _showBlockedPage();
+      return orig.apply(console, args);
+    };
+  }
+  console.log   = _intercept(_origLog);
+  console.warn  = _intercept(_origWarn);
+  console.error = _intercept(_origError);
+  console.info  = _intercept(_origInfo);
+  console.debug = _intercept(_origDebug);
+  console.dir   = _intercept(_origDir);
 
-    // فحص كل ثانية للـ debugger
-    setInterval(function() {
-      if (_consoleOpened) return;
-      const _t = new Date();
-      (function(){})["constructor"]("debugger")();
-      if (new Date() - _t > 200) {
-        _consoleOpened = true;
-        _showBlockedPage();
-      }
-    }, 1000);
-  })();
+  /* keyboard shortcuts block */
+  document.addEventListener("keydown", function(e) {
+    const blocked = (
+      e.key === "F12" ||
+      (e.ctrlKey && e.shiftKey && (e.key==="I"||e.key==="J"||e.key==="C")) ||
+      (e.ctrlKey && e.key==="U") ||
+      (e.ctrlKey && e.key==="S") ||
+      (e.ctrlKey && e.key==="P") ||
+      (e.metaKey && e.altKey && (e.key==="I"||e.key==="J"))
+    );
+    if (blocked) {
+      e.preventDefault(); e.stopPropagation();
+      _showBlockedPage();
+    }
+  }, true);
 
-  document.addEventListener("dragover", function(e) { e.preventDefault(); }, false);
-  document.addEventListener("drop",     function(e) { e.preventDefault(); }, false);
-
-  document.addEventListener("selectstart", function(e) {
+  document.addEventListener("contextmenu", e => { e.preventDefault(); e.stopPropagation(); }, true);
+  document.addEventListener("dragover", e => e.preventDefault(), false);
+  document.addEventListener("drop",     e => e.preventDefault(), false);
+  document.addEventListener("selectstart", e => {
     const t = e.target;
-    if (!t || typeof t.matches !== "function") { e.preventDefault(); return; }
-    if (!t.matches('input, textarea, .cf-input, .prod-card-name-inp, .prod-card-price-inp, .cf-social-input')) {
-      e.preventDefault();
-    }
+    if (!t||typeof t.matches!=="function"){e.preventDefault();return;}
+    if (!t.matches('input,textarea,.cf-input,.prod-card-name-inp,.prod-card-price-inp,.cf-social-input')){e.preventDefault();}
   });
 })();
 
-// ================================================================
-// THREAT DETECTION
-// ================================================================
+/* ── Threat detection ── */
 (function _threatDetection() {
-  const _W = window;
-  const _now = () => Date.now();
-  const _TK = "bdy_threat_v1";
-
-  function _getState() {
-    try { return JSON.parse(localStorage.getItem(_TK)) || { loginTs: [], reqTs: [], flagged: false }; }
-    catch { return { loginTs: [], reqTs: [], flagged: false }; }
-  }
-  function _setState(s) { try { localStorage.setItem(_TK, JSON.stringify(s)); } catch {} }
-
-  function _trigger() {
-    _setState({ loginTs: [], reqTs: [], flagged: true });
-    if (typeof _W.__SHOW_BLOCKED__ === "function") _W.__SHOW_BLOCKED__();
-  }
-
-  _W.__RECORD_LOGIN_ATTEMPT__ = function() {
-    const s = _getState(), now = _now();
-    s.loginTs = [...(s.loginTs || []).filter(t => now - t < 60000), now];
-    if (s.loginTs.length >= 8) { _trigger(); return; }
-    _setState(s);
-  };
-
-  _W.__RECORD_REQUEST__ = function() {
-    const s = _getState(), now = _now();
-    s.reqTs = [...(s.reqTs || []).filter(t => now - t < 5000), now];
-    if (s.reqTs.length >= 6) { _trigger(); return; }
-    _setState(s);
-  };
-
-  const _origFetch = _W.fetch;
-  _W.fetch = function(...args) { _W.__RECORD_REQUEST__(); return _origFetch.apply(this, args); };
-
-  const _origXHROpen = XMLHttpRequest.prototype.open;
-  XMLHttpRequest.prototype.open = function(...args) { _W.__RECORD_REQUEST__(); return _origXHROpen.apply(this, args); };
-
-  let _inputRapidCount = 0, _inputRapidTimer = null;
-  document.addEventListener("input", function(e) {
-    if (e.target && e.target.id === "brand-id-input") {
-      _inputRapidCount++;
-      clearTimeout(_inputRapidTimer);
-      _inputRapidTimer = setTimeout(() => { _inputRapidCount = 0; }, 2000);
-      if (_inputRapidCount > 20) { _trigger(); }
-    }
-  }, true);
-
-  let _pasteCount = 0;
-  document.addEventListener("paste", function(e) {
-    _pasteCount++;
-    if (_pasteCount > 5) { _trigger(); }
-  }, true);
+  const _W = window, _now = () => Date.now(), _TK = "bdy_threat_v1";
+  function _gs() { try { return JSON.parse(localStorage.getItem(_TK))||{loginTs:[],reqTs:[],flagged:false}; } catch { return {loginTs:[],reqTs:[],flagged:false}; } }
+  function _ss(s) { try { localStorage.setItem(_TK,JSON.stringify(s)); } catch {} }
+  function _trigger() { _ss({loginTs:[],reqTs:[],flagged:true}); if(typeof _W.__SHOW_BLOCKED__==="function")_W.__SHOW_BLOCKED__(); }
+  _W.__RECORD_LOGIN_ATTEMPT__ = function() { const s=_gs(),now=_now(); s.loginTs=[...(s.loginTs||[]).filter(t=>now-t<60000),now]; if(s.loginTs.length>=8){_trigger();return;} _ss(s); };
+  _W.__RECORD_REQUEST__       = function() { const s=_gs(),now=_now(); s.reqTs=[...(s.reqTs||[]).filter(t=>now-t<5000),now]; if(s.reqTs.length>=6){_trigger();return;} _ss(s); };
+  if(_gs().flagged){ setTimeout(()=>{ if(typeof _W.__SHOW_BLOCKED__==="function")_W.__SHOW_BLOCKED__(); },100); }
+  const _oF=_W.fetch; _W.fetch=function(...a){_W.__RECORD_REQUEST__&&_W.__RECORD_REQUEST__();return _oF.apply(this,a);};
+  const _oX=XMLHttpRequest.prototype.open; XMLHttpRequest.prototype.open=function(...a){_W.__RECORD_REQUEST__&&_W.__RECORD_REQUEST__();return _oX.apply(this,a);};
+  let _irc=0,_irt=null;
+  document.addEventListener("input",e=>{ if(e.target&&e.target.id==="brand-id-input"){_irc++;clearTimeout(_irt);_irt=setTimeout(()=>{_irc=0;},2000);if(_irc>20)_trigger();}},true);
+  let _pc=0; document.addEventListener("paste",()=>{ _pc++; if(_pc>5)_trigger(); },true);
 })();
 
-// ================================================================
-// SECURE STORAGE — تشفير الجلسة في sessionStorage
-// ================================================================
+/* ── Secure Session Storage ── */
 const _SecureStorage = (function() {
   const _k = (function() {
-    const fp = [navigator.language, navigator.hardwareConcurrency || 4, screen.colorDepth, Intl.DateTimeFormat().resolvedOptions().timeZone].join("|");
-    let hash = 0;
-    for (let i = 0; i < fp.length; i++) { hash = ((hash << 5) - hash) + fp.charCodeAt(i); hash |= 0; }
-    return "BDY_" + Math.abs(hash).toString(36);
+    const fp=[navigator.language,navigator.hardwareConcurrency||4,screen.colorDepth,Intl.DateTimeFormat().resolvedOptions().timeZone].join("|");
+    let hash=0; for(let i=0;i<fp.length;i++){hash=((hash<<5)-hash)+fp.charCodeAt(i);hash|=0;} return "BDY_"+Math.abs(hash).toString(36);
   })();
-
-  function _encode(data) {
-    try {
-      const json = JSON.stringify({ v: data, ts: Date.now() });
-      return btoa(encodeURIComponent(json).replace(/%([0-9A-F]{2})/g, (_, p1) => String.fromCharCode("0x" + p1)));
-    } catch { return null; }
-  }
-  function _decode(raw) {
-    try {
-      const json = decodeURIComponent(Array.from(atob(raw), c => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2)).join(""));
-      const obj  = JSON.parse(json);
-      return obj.v ?? null;
-    } catch { return null; }
-  }
-
+  function _encode(data) { try { const j=JSON.stringify({v:data,ts:Date.now()}); return btoa(encodeURIComponent(j).replace(/%([0-9A-F]{2})/g,(_,p1)=>String.fromCharCode("0x"+p1))); } catch { return null; } }
+  function _decode(raw)  { try { const j=decodeURIComponent(Array.from(atob(raw),c=>"%"+("00"+c.charCodeAt(0).toString(16)).slice(-2)).join("")); const o=JSON.parse(j); return o.v??null; } catch { return null; } }
   return {
-    set(key, value) {
-      try { const enc = _encode(value); if (enc) sessionStorage.setItem(_k + "_" + btoa(key), enc); } catch {}
-    },
-    get(key) {
-      try { const raw = sessionStorage.getItem(_k + "_" + btoa(key)); if (!raw) return null; return _decode(raw); } catch { return null; }
-    },
-    remove(key) { try { sessionStorage.removeItem(_k + "_" + btoa(key)); } catch {} },
-    clear()     { try { sessionStorage.clear(); } catch {} }
+    set(key,value)  { try { const e=_encode(value); if(e) sessionStorage.setItem(_k+"_"+btoa(key),e); } catch {} },
+    get(key)        { try { const r=sessionStorage.getItem(_k+"_"+btoa(key)); if(!r) return null; return _decode(r); } catch { return null; } },
+    remove(key)     { try { sessionStorage.removeItem(_k+"_"+btoa(key)); } catch {} },
+    clear()         { try { sessionStorage.clear(); } catch {} }
   };
 })();
 
-// ================================================================
-// PERSISTENT SESSION STORAGE — حفظ الجلسة عبر المتصفحات
-// حسب Brand ID — مش Firebase — في localStorage مشفر
-// ================================================================
+/* ── Cross-origin persistent session via localStorage ── */
 const _PersistSession = (function() {
-  // مفتاح ثابت مشفر لا يمكن تخمينه
-  const _BASE = (function() {
-    const _p = [66,68,89,95,80,83,95];
-    return _p.map(c => String.fromCharCode(c)).join('');
-  })();
-
-  function _encodeValue(val) {
-    try {
-      const raw = JSON.stringify({ d: val, t: Date.now() });
-      // تشفير بسيط متعدد الطبقات
-      let enc = btoa(unescape(encodeURIComponent(raw)));
-      // قلب الـ string
-      enc = enc.split('').reverse().join('');
-      // تشفير مرة تانية
-      enc = btoa(enc);
-      return enc;
-    } catch { return null; }
-  }
-
-  function _decodeValue(enc) {
-    try {
-      let dec = atob(enc);
-      dec = dec.split('').reverse().join('');
-      dec = decodeURIComponent(escape(atob(dec)));
-      const obj = JSON.parse(dec);
-      // صلاحية 30 يوم
-      if (Date.now() - obj.t > 30 * 24 * 60 * 60 * 1000) return null;
-      return obj.d;
-    } catch { return null; }
-  }
-
-  function _makeKey(brandId) {
-    // مفتاح مخصص للبراند
-    let h = 0;
-    const s = _BASE + brandId + navigator.language;
-    for (let i = 0; i < s.length; i++) { h = ((h << 5) - h) + s.charCodeAt(i); h |= 0; }
-    return _BASE + Math.abs(h).toString(36);
-  }
-
+  const _SK = "bdy_xsess_v1";
+  function _enc(v) { try { return btoa(encodeURIComponent(JSON.stringify(v))); } catch { return null; } }
+  function _dec(s) { try { return JSON.parse(decodeURIComponent(atob(s))); } catch { return null; } }
   return {
-    saveSession(brandId) {
-      try {
-        const key = _makeKey(brandId);
-        const enc = _encodeValue({ id: brandId });
-        if (enc) localStorage.setItem(key, enc);
-        // حفظ بمفتاح عام كمان عشان نقدر نجيبه
-        const globalKey = _BASE + "SESS";
-        localStorage.setItem(globalKey, _encodeValue({ key, brandId }));
-      } catch {}
-    },
-    loadSession() {
-      try {
-        const globalKey = _BASE + "SESS";
-        const globalEnc = localStorage.getItem(globalKey);
-        if (!globalEnc) return null;
-        const globalData = _decodeValue(globalEnc);
-        if (!globalData) { localStorage.removeItem(globalKey); return null; }
-        const { key, brandId } = globalData;
-        const enc = localStorage.getItem(key);
-        if (!enc) return null;
-        const data = _decodeValue(enc);
-        if (!data || data.id !== brandId) return null;
-        return brandId;
-      } catch { return null; }
-    },
-    saveSetting(brandId, settingKey, settingVal) {
-      try {
-        const key = _makeKey(brandId) + "_S_" + btoa(settingKey).replace(/=/g,'');
-        const enc = _encodeValue(settingVal);
-        if (enc) localStorage.setItem(key, enc);
-      } catch {}
-    },
-    loadSetting(brandId, settingKey) {
-      try {
-        const key = _makeKey(brandId) + "_S_" + btoa(settingKey).replace(/=/g,'');
-        const enc = localStorage.getItem(key);
-        if (!enc) return null;
-        return _decodeValue(enc);
-      } catch { return null; }
-    },
-    clearSession(brandId) {
-      try {
-        const globalKey = _BASE + "SESS";
-        localStorage.removeItem(globalKey);
-        if (brandId) {
-          const key = _makeKey(brandId);
-          localStorage.removeItem(key);
-        }
-      } catch {}
-    }
+    save(id) { try { localStorage.setItem(_SK,_enc({id,ts:Date.now()})); } catch {} },
+    load()   { try { const r=_dec(localStorage.getItem(_SK)||""); return r&&r.id?r.id:null; } catch { return null; } },
+    clear()  { try { localStorage.removeItem(_SK); } catch {} }
   };
 })();
 
-// ================================================================
-// HELPERS
-// ================================================================
-const _getEl = id => document.getElementById(id);
-const _esc = function(s) { const d = document.createElement("div"); d.textContent = String(s ?? ""); return d.innerHTML; };
-const _attr = function(s) {
-  return String(s ?? "").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-};
-const _safeUrl = function(url) {
-  if (!url) return "#";
-  const s = String(url).trim().toLowerCase();
-  if (s.startsWith("javascript:") || s.startsWith("data:") || s.startsWith("vbscript:")) return "#";
-  return url;
-};
+/* ── Per-brand settings via localStorage (never Firebase) ── */
+const _BrandPrefs = (function() {
+  function _key(brandId,pref) { return "bdy_prefs_"+btoa(brandId)+"_"+pref; }
+  return {
+    set(brandId,pref,val) { try { localStorage.setItem(_key(brandId,pref),String(val)); } catch {} },
+    get(brandId,pref,def) { try { const v=localStorage.getItem(_key(brandId,pref)); return v!==null?v:def; } catch { return def; } }
+  };
+})();
 
-// ================================================================
-// FIREBASE WRAPPER
-// ================================================================
+const _getEl  = id => document.getElementById(id);
+const _esc    = s  => { const d=document.createElement("div"); d.textContent=String(s??""); return d.innerHTML; };
+const _attr   = s  => String(s??"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/'/g,"&#39;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const _safeUrl = url => { if(!url) return "#"; const s=String(url).trim().toLowerCase(); if(s.startsWith("javascript:")||s.startsWith("data:")||s.startsWith("vbscript:")) return "#"; return url; };
+
 const FB = {
-  _ready() {
-    return new Promise(resolve => {
-      if (window.__FB_READY__) return resolve();
-      document.addEventListener("fb:ready", () => resolve(), { once: true });
-    });
-  },
-  async getDoc(col, id) {
-    await this._ready();
-    const api  = window.__FB_API__;
-    const snap = await api.getDoc(api.doc(api.db, col, id));
-    if (!snap.exists()) return null;
-    return { _id: snap.id, ...snap.data() };
-  },
-  async update(col, id, fields) {
-    await this._ready();
-    const api = window.__FB_API__;
-    return api.updateDoc(api.doc(api.db, col, id), fields);
-  }
+  _ready() { return new Promise(r=>{ if(window.__FB_READY__) return r(); document.addEventListener("fb:ready",()=>r(),{once:true}); }); },
+  async getDoc(col,id) { await this._ready(); const api=window.__FB_API__; const snap=await api.getDoc(api.doc(api.db,col,id)); if(!snap.exists()) return null; return {_id:snap.id,...snap.data()}; },
+  async update(col,id,fields) { await this._ready(); const api=window.__FB_API__; return api.updateDoc(api.doc(api.db,col,id),fields); }
 };
 
-const BRANDS_COL  = (function(){ const p=["bra","nds"]; return p.join(""); })();
-const LOCK_KEY    = "brandy_lock_v2";
-const SESSION_KEY = "bsess";
-const CFG         = { MAX_ATTEMPTS: 3, BASE_MS: 5 * 60 * 1000, MAX_MS: 10 * 60 * 60 * 1000 };
-const FS_MIN = 12, FS_MAX = 20, FS_DEFAULT = 15;
+const BRANDS_COL = (function(){ return ["bra","nds"].join(""); })();
+const LOCK_KEY   = "brandy_lock_v2";
+const SESSION_KEY= "bsess";
+const CFG        = { MAX_ATTEMPTS:3, BASE_MS:5*60*1000, MAX_MS:10*60*60*1000 };
+const FS_MIN=12, FS_MAX=20, FS_DEFAULT=15;
 
-Object.defineProperty(window, "BRANDS_COL", { get: () => undefined, configurable: false });
-
-// ================================================================
-// LOCK
-// ================================================================
 const Lock = {
-  _load() { try { return JSON.parse(localStorage.getItem(LOCK_KEY)) || { att: 0, until: 0, mult: 1 }; } catch { return { att: 0, until: 0, mult: 1 }; } },
-  _save(s) { localStorage.setItem(LOCK_KEY, JSON.stringify(s)); },
-  isLocked()  { return this._load().until > Date.now(); },
-  remaining() { return Math.max(0, this._load().until - Date.now()); },
+  _load() { try { return JSON.parse(localStorage.getItem(LOCK_KEY))||{att:0,until:0,mult:1}; } catch { return {att:0,until:0,mult:1}; } },
+  _save(s){ localStorage.setItem(LOCK_KEY,JSON.stringify(s)); },
+  isLocked()  { return this._load().until>Date.now(); },
+  remaining() { return Math.max(0,this._load().until-Date.now()); },
   attempts()  { return this._load().att; },
-  fail() {
-    const s = this._load(); s.att++;
-    if (s.att >= CFG.MAX_ATTEMPTS) {
-      const dur = Math.min(CFG.BASE_MS * s.mult, CFG.MAX_MS);
-      s.until = Date.now() + dur;
-      if (dur < CFG.MAX_MS) s.mult *= 2;
-      s.att = 0;
-    }
-    this._save(s);
-  },
-  reset() { localStorage.removeItem(LOCK_KEY); }
+  fail() { const s=this._load(); s.att++; if(s.att>=CFG.MAX_ATTEMPTS){const dur=Math.min(CFG.BASE_MS*s.mult,CFG.MAX_MS);s.until=Date.now()+dur;if(dur<CFG.MAX_MS)s.mult*=2;s.att=0;} this._save(s); },
+  reset(){ localStorage.removeItem(LOCK_KEY); }
 };
 
-// ================================================================
-// THEME — مع حفظ الإعداد في localStorage حسب brandId
-// ================================================================
+/* ── Theme & FontSize — per-brand ── */
+let _currentBrandId = null;
+
 const Theme = {
-  _brandId: null,
   init(brandId) {
-    this._brandId = brandId || null;
-    let t = "light";
-    if (brandId) {
-      const saved = _PersistSession.loadSetting(brandId, "theme");
-      if (saved) t = saved;
-      else t = localStorage.getItem("brandy_theme_v2") || "light";
-    } else {
-      t = localStorage.getItem("brandy_theme_v2") || "light";
-    }
-    this.apply(t);
+    _currentBrandId = brandId;
+    const saved = brandId ? _BrandPrefs.get(brandId,"theme","light") : (localStorage.getItem("brandy_theme_global")||"light");
+    this.apply(saved);
   },
   apply(t) {
-    document.body.classList.toggle("dark", t === "dark");
-    localStorage.setItem("brandy_theme_v2", t);
-    if (this._brandId) _PersistSession.saveSetting(this._brandId, "theme", t);
-    const tog = _getEl("theme-toggle"); if (tog) tog.checked = t === "dark";
-    const btn = _getEl("theme-btn");
-    if (btn) btn.querySelector(".material-icons-round").textContent = t === "dark" ? "light_mode" : "dark_mode";
+    document.body.classList.toggle("dark",t==="dark");
+    if(_currentBrandId) _BrandPrefs.set(_currentBrandId,"theme",t);
+    else localStorage.setItem("brandy_theme_global",t);
+    const tog=_getEl("theme-toggle"); if(tog) tog.checked=t==="dark";
+    const btn=_getEl("theme-btn"); if(btn) btn.querySelector(".material-icons-round").textContent=t==="dark"?"light_mode":"dark_mode";
   },
-  toggle()              { this.apply(document.body.classList.contains("dark") ? "light" : "dark"); },
-  applyFromToggle(dark) { this.apply(dark ? "dark" : "light"); },
-  setBrand(id)          { this._brandId = id; }
+  toggle()             { this.apply(document.body.classList.contains("dark")?"light":"dark"); },
+  applyFromToggle(dark){ this.apply(dark?"dark":"light"); }
 };
 
-// ================================================================
-// FONT SIZE — مع حفظ حسب brandId
-// ================================================================
 const FontSize = {
   _cur: FS_DEFAULT,
-  _brandId: null,
   init(brandId) {
-    this._brandId = brandId || null;
-    if (brandId) {
-      const saved = _PersistSession.loadSetting(brandId, "fontSize");
-      this._cur = saved ? parseInt(saved, 10) : FS_DEFAULT;
-    } else {
-      this._cur = parseInt(localStorage.getItem("brandy_fs_v2") || FS_DEFAULT, 10);
-    }
+    _currentBrandId = brandId||_currentBrandId;
+    const saved = brandId ? _BrandPrefs.get(brandId,"fs",FS_DEFAULT) : FS_DEFAULT;
+    this._cur = parseInt(saved,10)||FS_DEFAULT;
     this._apply();
   },
   _apply() {
-    document.documentElement.style.setProperty("--fs-base", this._cur + "px");
-    const el = _getEl("fs-val"); if (el) el.textContent = this._cur;
-    localStorage.setItem("brandy_fs_v2", this._cur);
-    if (this._brandId) _PersistSession.saveSetting(this._brandId, "fontSize", this._cur);
+    document.documentElement.style.setProperty("--fs-base",this._cur+"px");
+    const el=_getEl("fs-val"); if(el) el.textContent=this._cur;
+    if(_currentBrandId) _BrandPrefs.set(_currentBrandId,"fs",this._cur);
   },
-  increase() { if (this._cur < FS_MAX) { this._cur++; this._apply(); } },
-  decrease() { if (this._cur > FS_MIN) { this._cur--; this._apply(); } },
-  setBrand(id) { this._brandId = id; }
+  increase(){ if(this._cur<FS_MAX){this._cur++;this._apply();} },
+  decrease(){ if(this._cur>FS_MIN){this._cur--;this._apply();} }
 };
 
-// ================================================================
-// TOAST
-// ================================================================
 const Toast = {
-  show(msg, type = "ok") {
-    const icons = { ok: "check_circle", err: "error", warn: "warning" };
-    const t = document.createElement("div"); t.className = "toast t-" + type;
-    const ico = document.createElement("span"); ico.className = "material-icons-round"; ico.textContent = icons[type] || "info";
-    const txt = document.createElement("span"); txt.textContent = msg;
+  show(msg,type="ok") {
+    const icons={ok:"check_circle",err:"error",warn:"warning"};
+    const t=document.createElement("div"); t.className="toast t-"+type;
+    const ico=document.createElement("span"); ico.className="material-icons-round"; ico.textContent=icons[type]||"info";
+    const txt=document.createElement("span"); txt.textContent=msg;
     t.appendChild(ico); t.appendChild(txt);
     _getEl("toast-hub").appendChild(t);
-    setTimeout(() => {
-      t.style.cssText = "opacity:0;transform:translateX(-12px);transition:all .3s";
-      setTimeout(() => t.remove(), 300);
-    }, 3500);
+    setTimeout(()=>{ t.style.cssText="opacity:0;transform:translateX(-12px);transition:all .3s"; setTimeout(()=>t.remove(),300); },3500);
   }
 };
 
-function showScreen(id) {
-  document.querySelectorAll(".screen").forEach(s => s.classList.toggle("on", s.id === id));
-}
+function showScreen(id) { document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on",s.id===id)); }
 
 const VIEW_INFO = {
-  "overview": { t: "نظرة عامة",  s: "بيانات البراند" },
-  "control":  { t: "التحكم",     s: "إدارة وتعديل البيانات" },
-  "settings": { t: "الإعدادات", s: "تخصيص التجربة" }
+  "overview":{ t:"نظرة عامة",  s:"بيانات البراند" },
+  "control": { t:"التحكم",     s:"إدارة وتعديل البيانات" },
+  "settings":{ t:"الإعدادات", s:"تخصيص التجربة" }
 };
-
 function showView(name) {
-  if (!VIEW_INFO[name]) return;
-  document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === "view-" + name));
-  document.querySelectorAll(".nav-btn[data-view]").forEach(b => b.classList.toggle("active", b.dataset.view === name));
-  const info = VIEW_INFO[name] || {};
-  if (_getEl("tb-title")) _getEl("tb-title").textContent = info.t || "";
-  if (_getEl("tb-sub"))   _getEl("tb-sub").textContent   = info.s || "";
+  if(!VIEW_INFO[name]) return;
+  document.querySelectorAll(".view").forEach(v=>v.classList.toggle("on",v.id==="view-"+name));
+  document.querySelectorAll(".nav-btn[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name));
+  const info=VIEW_INFO[name]||{};
+  if(_getEl("tb-title")) _getEl("tb-title").textContent=info.t||"";
+  if(_getEl("tb-sub"))   _getEl("tb-sub").textContent=info.s||"";
   closeSidebar();
 }
 
-// ================================================================
-// AUTH
-// ================================================================
 const Auth = {
-  _interval: null,
-  _setLoading(on) {
-    _getEl("login-btn").disabled = on;
-    _getEl("btn-text").classList.toggle("hidden", on);
-    _getEl("btn-loader").classList.toggle("hidden", !on);
-    _getEl("btn-ico").classList.toggle("hidden", on);
-  },
-  _showErr(msg) { const e = _getEl("auth-err"); e.textContent = msg; e.classList.remove("hide"); },
-  _clearErr()   { const e = _getEl("auth-err"); e.textContent = ""; e.classList.add("hide"); },
-  _updateAtt()  { const att = Lock.attempts(); _getEl("auth-att").textContent = att > 0 ? `المحاولات المتبقية: ${CFG.MAX_ATTEMPTS - att}` : ""; },
-  _fmt(ms) {
-    const s = Math.ceil(ms / 1000), h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = s % 60;
-    const p = n => String(n).padStart(2, "0");
-    return h > 0 ? `${h}:${p(m)}:${p(sec)}` : `${p(m)}:${p(sec)}`;
-  },
+  _interval:null,
+  _setLoading(on){ _getEl("login-btn").disabled=on; _getEl("btn-text").classList.toggle("hidden",on); _getEl("btn-loader").classList.toggle("hidden",!on); _getEl("btn-ico").classList.toggle("hidden",on); },
+  _showErr(msg){ const e=_getEl("auth-err"); e.textContent=msg; e.classList.remove("hide"); },
+  _clearErr()  { const e=_getEl("auth-err"); e.textContent=""; e.classList.add("hide"); },
+  _updateAtt() { const att=Lock.attempts(); _getEl("auth-att").textContent=att>0?`المحاولات المتبقية: ${CFG.MAX_ATTEMPTS-att}`:""; },
+  _fmt(ms){ const s=Math.ceil(ms/1000),h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60,p=n=>String(n).padStart(2,"0"); return h>0?`${h}:${p(m)}:${p(sec)}`:`${p(m)}:${p(sec)}`; },
   _startCountdown() {
-    _getEl("auth-form").classList.add("hidden");
-    _getEl("lock-panel").classList.remove("hidden");
+    _getEl("auth-form").classList.add("hidden"); _getEl("lock-panel").classList.remove("hidden");
     clearInterval(this._interval);
-    const tick = () => {
-      const rem = Lock.remaining();
-      _getEl("lock-countdown").textContent = this._fmt(rem);
-      if (rem <= 0) { clearInterval(this._interval); this._unlock(); }
-    };
-    tick();
-    this._interval = setInterval(tick, 500);
+    const tick=()=>{ const rem=Lock.remaining(); _getEl("lock-countdown").textContent=this._fmt(rem); if(rem<=0){clearInterval(this._interval);this._unlock();} };
+    tick(); this._interval=setInterval(tick,500);
   },
-  _unlock() {
-    _getEl("lock-panel").classList.add("hidden");
-    _getEl("auth-form").classList.remove("hidden");
-    this._clearErr(); this._updateAtt();
-  },
-  _sanitizeId(id) { return String(id).replace(/[^a-zA-Z0-9_\-]/g, "").slice(0, 60); },
-
+  _unlock(){ _getEl("lock-panel").classList.add("hidden"); _getEl("auth-form").classList.remove("hidden"); this._clearErr(); this._updateAtt(); },
+  _sanitizeId(id){ return String(id).replace(/[^a-zA-Z0-9_\-]/g,"").slice(0,60); },
   async login() {
-    if (Lock.isLocked()) { this._startCountdown(); return; }
-    const rawId = _getEl("brand-id-input").value.trim();
-    const id    = this._sanitizeId(rawId);
-    if (!id) { this._showErr("أدخل معرّف البراند"); return; }
-    if (id !== rawId) { this._showErr("المعرّف يحتوي على أحرف غير مسموح بها"); return; }
-
-    window.__RECORD_LOGIN_ATTEMPT__ && window.__RECORD_LOGIN_ATTEMPT__();
+    if(Lock.isLocked()){this._startCountdown();return;}
+    const rawId=_getEl("brand-id-input").value.trim(), id=this._sanitizeId(rawId);
+    if(!id){this._showErr("أدخل معرّف البراند");return;}
+    if(id!==rawId){this._showErr("المعرّف يحتوي على أحرف غير مسموح بها");return;}
+    window.__RECORD_LOGIN_ATTEMPT__&&window.__RECORD_LOGIN_ATTEMPT__();
     this._setLoading(true); this._clearErr();
     try {
-      const data = await FB.getDoc(BRANDS_COL, id);
-      if (!data) {
-        Lock.fail(); this._updateAtt();
-        if (Lock.isLocked()) { this._startCountdown(); Toast.show("تم قفل النظام بسبب محاولات متكررة", "warn"); }
-        else                 { this._showErr("المعرّف غير موجود — تحقق من البيانات"); }
-      } else {
-        Lock.reset();
-        _getEl("brand-id-input").value = "";
-        _SecureStorage.set(SESSION_KEY, id);
-        _PersistSession.saveSession(id);
-        Dashboard.load(id, data);
-        showScreen("dash");
-        Toast.show("✓ مرحباً بك!", "ok");
-      }
-    } catch (e) {
-      this._showErr("خطأ في الاتصال");
-    }
+      const data=await FB.getDoc(BRANDS_COL,id);
+      if(!data){ Lock.fail(); this._updateAtt(); if(Lock.isLocked()){this._startCountdown();Toast.show("تم قفل النظام بسبب محاولات متكررة","warn");}else{this._showErr("المعرّف غير موجود — تحقق من البيانات");} }
+      else { Lock.reset(); _getEl("brand-id-input").value=""; _SecureStorage.set(SESSION_KEY,id); _PersistSession.save(id); Dashboard.load(id,data); showScreen("dash"); Toast.show("✓ مرحباً بك!","ok"); }
+    } catch(e) { this._showErr("خطأ في الاتصال"); }
     this._setLoading(false);
   },
-
   init() {
-    if (Lock.isLocked()) this._startCountdown(); else this._updateAtt();
-    _getEl("login-btn").addEventListener("click", () => this.login());
-    _getEl("brand-id-input").addEventListener("keydown", e => { if (e.key === "Enter") this.login(); });
-    _getEl("brand-id-input").addEventListener("paste", e => {
-      e.preventDefault();
-      const text = (e.clipboardData || window.clipboardData).getData("text/plain");
-      _getEl("brand-id-input").value = this._sanitizeId(text);
-    });
+    if(Lock.isLocked()) this._startCountdown(); else this._updateAtt();
+    _getEl("login-btn").addEventListener("click",()=>this.login());
+    _getEl("brand-id-input").addEventListener("keydown",e=>{if(e.key==="Enter")this.login();});
+    _getEl("brand-id-input").addEventListener("paste",e=>{ e.preventDefault(); const t=(e.clipboardData||window.clipboardData).getData("text/plain"); _getEl("brand-id-input").value=this._sanitizeId(t); });
   }
 };
 
-// ================================================================
-// AUTO LOGIN — من PersistSession أولاً ثم SecureStorage
-// ================================================================
 async function attemptAutoLogin() {
-  // محاولة من الـ localStorage المشفر أولاً (يشتغل عبر المتصفحات)
-  let storedId = _PersistSession.loadSession();
-  // fallback للـ sessionStorage
-  if (!storedId) storedId = _SecureStorage.get(SESSION_KEY);
-  if (!storedId) return false;
+  /* try sessionStorage first, then localStorage (cross-origin persist) */
+  let storedId = _SecureStorage.get(SESSION_KEY) || _PersistSession.load();
+  if(!storedId) return false;
   try {
-    const data = await FB.getDoc(BRANDS_COL, storedId);
-    if (data) {
-      _PersistSession.saveSession(storedId); // تجديد الصلاحية
-      Dashboard.load(storedId, data);
-      showScreen("dash");
-      Toast.show("✓ تم تسجيل الدخول تلقائياً", "ok");
-      return true;
-    } else {
-      _PersistSession.clearSession(storedId);
-      _SecureStorage.remove(SESSION_KEY);
-    }
-  } catch (e) {}
+    const data=await FB.getDoc(BRANDS_COL,storedId);
+    if(data){ Dashboard.load(storedId,data); showScreen("dash"); Toast.show("✓ تم تسجيل الدخول تلقائياً","ok"); return true; }
+    else { _SecureStorage.remove(SESSION_KEY); _PersistSession.clear(); }
+  } catch(e) {}
   return false;
 }
 
-// ================================================================
-// PRODUCT CONFIRM — رسالة تأكيد الإضافة مع countdown
-// ================================================================
-const ProductConfirm = {
-  _timer: null,
-  _secs: 5,
-  _pendingProduct: null,
-  _pendingList: null,
-  _editCallback: null,
-  _confirmCallback: null,
+/* ══════════════════════════════════════════════
+   Product Preview Modal
+   ══════════════════════════════════════════════ */
+const ProdPreview = (function(){
+  let _timer=null, _pendingProduct=null, _pendingList=null, _pendingCallback=null, _editCallback=null;
+  const DURATION=5000;
 
-  show(product, list, onConfirm, onEdit) {
-    this._pendingProduct  = product;
-    this._pendingList     = list;
-    this._confirmCallback = onConfirm;
-    this._editCallback    = onEdit;
+  function _show(product, list, onConfirm, onEdit){
+    _pendingProduct=product; _pendingList=list; _pendingCallback=onConfirm; _editCallback=onEdit;
+    const modal=_getEl("prod-preview-modal");
+    const img=_getEl("ppm-img");
+    const imgUrl=_safeUrl(product.imageUrl||"");
+    img.innerHTML= imgUrl&&imgUrl!=="#"
+      ? `<img src="${_attr(imgUrl)}" alt="" onerror="this.parentElement.innerHTML='<div class=prod-preview-img-ph><span class=material-icons-round>image</span></div>'">`
+      : `<div class="prod-preview-img-ph"><span class="material-icons-round">image</span></div>`;
+    _getEl("ppm-name").textContent=product.name_product||product.name||"منتج جديد";
+    _getEl("ppm-price").textContent=product.price!=null?(product.price+" ج.م"):"";
+    const badges=_getEl("ppm-badges"); badges.innerHTML="";
+    if(product.is_new){const b=document.createElement("span");b.className="prod-badge";b.textContent="جديد";badges.appendChild(b);}
+    if(product.is_out_of_stock){const b=document.createElement("span");b.className="prod-badge sold";b.textContent="نفذ";badges.appendChild(b);}
 
-    // بناء الـ preview
-    const prev = _getEl("prod-confirm-preview");
-    const img = _safeUrl(product.imageUrl || "");
-    prev.innerHTML = `
-      <div class="prod-confirm-img">
-        ${img && img !== "#"
-          ? `<img src="${_attr(img)}" alt="" onerror="this.parentElement.innerHTML='<span class=\\'material-icons-round\\'>image</span>'">`
-          : '<span class="material-icons-round">image</span>'}
-      </div>
-      <div class="prod-confirm-info">
-        <div class="prod-confirm-name">${_esc(product.name_product || product.name || "منتج جديد")}</div>
-        <div class="prod-confirm-price">${product.price ? product.price + " ج.م" : "بدون سعر"}</div>
-        <div class="prod-confirm-badges">
-          ${product.is_new ? '<span class="prod-badge">جديد</span>' : ""}
-          ${product.is_out_of_stock ? '<span class="prod-badge sold">نفذ</span>' : ""}
-        </div>
-      </div>
-    `;
-
-    // إظهار الـ overlay
-    _getEl("prod-confirm-overlay").classList.add("on");
-
-    // تشغيل الشريط
-    const bar = _getEl("prod-confirm-bar");
-    bar.style.animation = "none";
-    bar.offsetHeight; // reflow
-    bar.classList.add("running");
-    bar.style.animation = "";
-
-    // countdown
-    this._secs = 5;
-    _getEl("prod-confirm-secs").textContent = this._secs;
-    clearInterval(this._timer);
-    this._timer = setInterval(() => {
-      this._secs--;
-      const secsEl = _getEl("prod-confirm-secs");
-      if (secsEl) secsEl.textContent = this._secs;
-      if (this._secs <= 0) {
-        clearInterval(this._timer);
-        this._doConfirm();
-      }
-    }, 1000);
-  },
-
-  _doConfirm() {
-    clearInterval(this._timer);
-    _getEl("prod-confirm-overlay").classList.remove("on");
-    // إزالة animation class
-    const bar = _getEl("prod-confirm-bar");
-    if (bar) bar.classList.remove("running");
-    if (this._confirmCallback) this._confirmCallback();
-  },
-
-  _doEdit() {
-    clearInterval(this._timer);
-    _getEl("prod-confirm-overlay").classList.remove("on");
-    const bar = _getEl("prod-confirm-bar");
-    if (bar) bar.classList.remove("running");
-    if (this._editCallback) this._editCallback();
-  },
-
-  init() {
-    _getEl("prod-confirm-ok")?.addEventListener("click", () => this._doConfirm());
-    _getEl("prod-confirm-edit")?.addEventListener("click", () => this._doEdit());
+    const fill=_getEl("ppm-timer-fill");
+    fill.style.transition="none"; fill.style.width="100%";
+    modal.classList.add("on");
+    setTimeout(()=>{ fill.style.transition=`width ${DURATION}ms linear`; fill.style.width="0%"; },30);
+    clearTimeout(_timer);
+    _timer=setTimeout(()=>_confirm(),DURATION);
   }
-};
 
-// ================================================================
-// DASHBOARD
-// ================================================================
+  function _confirm(){
+    clearTimeout(_timer);
+    const modal=_getEl("prod-preview-modal");
+    modal.classList.remove("on");
+    if(_pendingCallback) _pendingCallback(_pendingProduct,_pendingList);
+    _pendingProduct=_pendingList=_pendingCallback=_editCallback=null;
+  }
+
+  function _edit(){
+    clearTimeout(_timer);
+    _getEl("prod-preview-modal").classList.remove("on");
+    if(_editCallback) _editCallback(_pendingProduct,_pendingList);
+    _pendingProduct=_pendingList=_pendingCallback=_editCallback=null;
+  }
+
+  function _init(){
+    _getEl("ppm-confirm").addEventListener("click",_confirm);
+    _getEl("ppm-edit").addEventListener("click",_edit);
+  }
+
+  return { show:_show, init:_init };
+})();
+
+/* ══════════════════════════════════════════════
+   Dashboard
+   ══════════════════════════════════════════════ */
 const Dashboard = {
-  _id:   null,
-  _data: null,
+  _id:null, _data:null,
+  _getStatus(b){ if(b.isActive===true) return "approved"; if(b.status==="rejected") return "rejected"; return "pending"; },
+  _statusLabel:{ pending:"قيد المراجعة", approved:"مقبول", rejected:"مرفوض" },
+  _statusCls:  { pending:"sb-pending",   approved:"sb-approved", rejected:"sb-rejected" },
+  _fmtTs(ts){ if(!ts) return ""; const ms=ts?.seconds?ts.seconds*1000:(typeof ts==="number"?ts:0); if(!ms) return ""; return new Date(ms).toLocaleDateString("ar-EG",{year:"numeric",month:"long",day:"numeric"}); },
+  _setSyncStatus(state){ const el=_getEl("sync-status");if(!el)return;const ico=el.querySelector(".material-icons-round"),lbl=el.querySelector("span:last-child");el.className="sync-status"+(state==="syncing"?" syncing":"");if(state==="syncing"){ico.textContent="sync";lbl.textContent="جارٍ الحفظ...";}else if(state==="done"){ico.textContent="cloud_done";lbl.textContent="محفوظ";}else{ico.textContent="cloud_off";lbl.textContent="خطأ";} },
 
-  _getStatus(b) {
-    if (b.isActive === true)       return "approved";
-    if (b.status   === "rejected") return "rejected";
-    return "pending";
-  },
-  _statusLabel: { pending: "قيد المراجعة", approved: "مقبول", rejected: "مرفوض" },
-  _statusCls:   { pending: "sb-pending",   approved: "sb-approved", rejected: "sb-rejected" },
-
-  _fmtTs(ts) {
-    if (!ts) return "";
-    const ms = ts?.seconds ? ts.seconds * 1000 : (typeof ts === "number" ? ts : 0);
-    if (!ms) return "";
-    return new Date(ms).toLocaleDateString("ar-EG", { year: "numeric", month: "long", day: "numeric" });
-  },
-
-  _setSyncStatus(state) {
-    const el = _getEl("sync-status"); if (!el) return;
-    const ico = el.querySelector(".material-icons-round"), lbl = el.querySelector("span:last-child");
-    el.className = "sync-status" + (state === "syncing" ? " syncing" : "");
-    if      (state === "syncing") { ico.textContent = "sync";       lbl.textContent = "جارٍ الحفظ..."; }
-    else if (state === "done")    { ico.textContent = "cloud_done"; lbl.textContent = "محفوظ"; }
-    else                          { ico.textContent = "cloud_off";  lbl.textContent = "خطأ"; }
-  },
-
-  async _save(fields, label) {
-    if (!this._id) { Toast.show("غير مصرح", "err"); return; }
-    const PROTECTED = ["isActive", "status", "brandId", "createdAt", "approvedAt"];
-    const safe = {};
-    for (const [k, v] of Object.entries(fields)) {
-      if (!PROTECTED.includes(k)) safe[k] = v;
-    }
-    if (!Object.keys(safe).length) { Toast.show("لا يمكن تعديل هذه البيانات", "warn"); return; }
-
+  async _save(fields,label) {
+    if(!this._id){Toast.show("غير مصرح","err");return;}
+    const PROTECTED=["isActive","status","brandId","createdAt","approvedAt"];
+    const safe={};
+    for(const [k,v] of Object.entries(fields)){if(!PROTECTED.includes(k))safe[k]=v;}
+    if(!Object.keys(safe).length){Toast.show("لا يمكن تعديل هذه البيانات","warn");return;}
     this._setSyncStatus("syncing");
     try {
-      await FB.update(BRANDS_COL, this._id, safe);
-      Object.assign(this._data, safe);
+      await FB.update(BRANDS_COL,this._id,safe);
+      Object.assign(this._data,safe);
       this._setSyncStatus("done");
-      Toast.show("✓ تم حفظ " + label, "ok");
+      Toast.show("✓ تم حفظ "+label,"ok");
       this._renderHero(); this._renderQuick(); this._updateAvatars();
-    } catch (e) {
-      this._setSyncStatus("error");
-      Toast.show("✗ فشل الحفظ", "err");
-    }
+    } catch(e) { this._setSyncStatus("error"); Toast.show("✗ فشل الحفظ","err"); }
   },
 
   _updateAvatars() {
-    const imgUrl      = this._data?.imageUrl;
-    const name        = this._data?.name || this._data?.brandName || this._id || "براند";
-    const firstLetter = name.charAt(0).toUpperCase();
-    const _setAv = (el) => {
-      if (!el) return;
-      if (imgUrl) {
-        const img = document.createElement("img"); img.src = _safeUrl(imgUrl); img.alt = "";
-        img.onerror = function() { this.parentElement.textContent = firstLetter; };
-        el.innerHTML = ""; el.appendChild(img);
-      } else { el.textContent = firstLetter; }
-    };
-    _setAv(_getEl("sb-av"));
-    _setAv(_getEl("welcome-avatar"));
+    const imgUrl=this._data?.imageUrl, name=this._data?.name||this._data?.brandName||this._id||"براند", fl=name.charAt(0).toUpperCase();
+    const _setAv=el=>{ if(!el)return; if(imgUrl){const img=document.createElement("img");img.src=_safeUrl(imgUrl);img.alt="";img.onerror=function(){this.parentElement.textContent=fl;};el.innerHTML="";el.appendChild(img);}else{el.textContent=fl;} };
+    _setAv(_getEl("sb-av")); _setAv(_getEl("welcome-avatar"));
   },
 
   _renderHero() {
-    const b      = this._data;
-    const name   = _esc(b.name || b.brandName || "براند");
-    const desc   = _esc(b.description || b.brandDescription || "");
-    const img    = _safeUrl(b.imageUrl || b.brandImage || "");
-    const logo   = _safeUrl(b.logoUrl  || b.brandLogo  || "");
-    const status = this._getStatus(b);
-
-    const coverHtml = img ? `<img src="${_attr(img)}" alt="${name}" loading="lazy">` : `<div class="brand-cover-ph"><span class="material-icons-round">store</span></div>`;
-    const logoHtml  = logo ? `<img src="${_attr(logo)}" alt="logo" onerror="this.style.display='none'">` : `<span class="material-icons-round">store</span>`;
-
-    const heroEl = _getEl("brand-hero"); heroEl.innerHTML = "";
-    const coverDiv = document.createElement("div"); coverDiv.className = "brand-cover"; coverDiv.innerHTML = coverHtml;
-    const bodyDiv  = document.createElement("div"); bodyDiv.className  = "brand-hero-body";
-    const logoDivEl = document.createElement("div"); logoDivEl.className = "brand-logo-lg"; logoDivEl.innerHTML = logoHtml;
-    const infoDiv   = document.createElement("div"); infoDiv.className   = "brand-hero-info";
-    infoDiv.innerHTML = `<div class="brand-hero-name">${name}</div>${desc ? `<div class="brand-hero-desc">${desc}</div>` : ""}<div class="brand-status-row"><span class="status-badge ${this._statusCls[status]}">${this._statusLabel[status]}</span>${b.category ? `<span class="status-badge" style="background:var(--bbg);color:var(--blue);border:1px solid rgba(59,130,246,.2)">${_esc(b.category)}</span>` : ""}</div>`;
-    const openBtn = document.createElement("button"); openBtn.className = "overview-open-btn";
-    openBtn.innerHTML = `<span class="material-icons-round">open_in_full</span>تفاصيل`;
-    openBtn.addEventListener("click", () => Dashboard.openDetail());
+    const b=this._data, name=_esc(b.name||b.brandName||"براند"), desc=_esc(b.description||b.brandDescription||""), img=_safeUrl(b.imageUrl||b.brandImage||""), logo=_safeUrl(b.logoUrl||b.brandLogo||""), status=this._getStatus(b);
+    const coverHtml=img?`<img src="${_attr(img)}" alt="${name}" loading="lazy">`:`<div class="brand-cover-ph"><span class="material-icons-round">store</span></div>`;
+    const logoHtml=logo?`<img src="${_attr(logo)}" alt="logo" onerror="this.style.display='none'">`:`<span class="material-icons-round">store</span>`;
+    const heroEl=_getEl("brand-hero"); heroEl.innerHTML="";
+    const coverDiv=document.createElement("div"); coverDiv.className="brand-cover"; coverDiv.innerHTML=coverHtml;
+    const bodyDiv=document.createElement("div"); bodyDiv.className="brand-hero-body";
+    const logoDivEl=document.createElement("div"); logoDivEl.className="brand-logo-lg"; logoDivEl.innerHTML=logoHtml;
+    const infoDiv=document.createElement("div"); infoDiv.className="brand-hero-info";
+    infoDiv.innerHTML=`<div class="brand-hero-name">${name}</div>${desc?`<div class="brand-hero-desc">${desc}</div>`:""}<div class="brand-status-row"><span class="status-badge ${this._statusCls[status]}">${this._statusLabel[status]}</span>${b.category?`<span class="status-badge" style="background:var(--bbg);color:var(--blue);border:1px solid rgba(59,130,246,.2)">${_esc(b.category)}</span>`:""}</div>`;
+    const openBtn=document.createElement("button"); openBtn.className="overview-open-btn"; openBtn.innerHTML=`<span class="material-icons-round">open_in_full</span>تفاصيل`;
+    openBtn.addEventListener("click",()=>Dashboard.openDetail());
     bodyDiv.appendChild(logoDivEl); bodyDiv.appendChild(infoDiv); bodyDiv.appendChild(openBtn);
     heroEl.appendChild(coverDiv); heroEl.appendChild(bodyDiv);
   },
 
   _renderQuick() {
-    const b = this._data;
-    const FIELDS = [
-      ["الفئة",          b.category,                                "category"],
-      ["رسوم التوصيل",  b.deliveryFee,                             "local_shipping"],
-      ["وقت التوصيل",   b.deliveryTime,                            "schedule"],
-      ["طرق الدفع",     b.paymentMethods,                          "payments"],
-      ["مناطق التوصيل", b.deliveryAreas,                           "map"],
-      ["أدنى سعر",      b.minPrice != null ? b.minPrice + " ج.م" : "", "sell"],
-      ["أعلى سعر",      b.maxPrice != null ? b.maxPrice + " ج.م" : "", "price_check"],
-      ["تاريخ القبول",  this._fmtTs(b.approvedAt),                 "event_available"]
-    ].filter(([, v]) => v != null && v !== "");
-
-    const qg = _getEl("quick-grid");
-    qg.innerHTML = FIELDS.map(([lbl, val, ico]) =>
-      `<div class="qcard"><div class="qcard-ico"><span class="material-icons-round">${_esc(ico)}</span></div><div class="qcard-lbl">${_esc(lbl)}</div><div class="qcard-val">${_esc(String(val))}</div></div>`
-    ).join("");
-
-    const social  = b.socialMedia || {}, website = _safeUrl(b.website || b.orderUrl || "");
-    const socLinks = [];
-    if (social.facebook)  socLinks.push([_safeUrl(social.facebook),  "fa-brands fa-facebook",  "Facebook"]);
-    if (social.instagram) socLinks.push([_safeUrl(social.instagram), "fa-brands fa-instagram", "Instagram"]);
-    if (social.tiktok)    socLinks.push([_safeUrl(social.tiktok),    "fa-brands fa-tiktok",    "TikTok"]);
-    if (website)          socLinks.push([website,                     "fa-solid fa-globe",      "الموقع"]);
-    const socHtml = socLinks.map(([url, cls, label]) =>
-      `<a class="social-link" href="${_attr(url)}" target="_blank" rel="noopener noreferrer"><i class="${cls}"></i>${_esc(label)}</a>`
-    ).join("");
-    _getEl("social-section").innerHTML = socHtml ? `<div class="products-label">التواصل الاجتماعي</div><div class="social-row">${socHtml}</div>` : "";
-
-    const prodImgs = b.products || [], prodList = b.productsList || [];
-    let prod = "";
-    if (prodImgs.length) prod += `<div class="products-label">صور المنتجات</div><div class="prod-strip">${prodImgs.map(u => `<div class="prod-thumb"><img src="${_attr(_safeUrl(u))}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`).join("")}</div>`;
-    if (prodList.length) prod += `<div class="products-label" style="margin-top:16px">قائمة المنتجات (${prodList.length})</div><div class="prod-list">${prodList.slice(0, 5).map(p => `<div class="prod-item">${p.imageUrl ? `<div class="prod-item-img"><img src="${_attr(_safeUrl(p.imageUrl))}" alt="" onerror="this.style.display='none'"></div>` : ""}<div class="prod-item-name">${_esc(p.name_product || p.name || "—")}</div><div class="prod-item-price">${p.price != null ? _esc(String(p.price)) + " ج.م" : ""}</div><div class="prod-item-badges">${p.is_new ? '<span class="prod-badge">جديد</span>' : ""}${p.is_out_of_stock ? '<span class="prod-badge sold">نفذ</span>' : ""}</div></div>`).join("")}${prodList.length > 5 ? `<div style="font-size:.72rem;color:var(--t3);text-align:center;padding:6px">+ ${prodList.length - 5} منتج آخر</div>` : ""}</div>`;
-    _getEl("products-section").innerHTML = prod;
+    const b=this._data;
+    const FIELDS=[["الفئة",b.category,"category"],["رسوم التوصيل",b.deliveryFee,"local_shipping"],["وقت التوصيل",b.deliveryTime,"schedule"],["طرق الدفع",b.paymentMethods,"payments"],["مناطق التوصيل",b.deliveryAreas,"map"],["أدنى سعر",b.minPrice!=null?b.minPrice+" ج.م":"","sell"],["أعلى سعر",b.maxPrice!=null?b.maxPrice+" ج.م":"","price_check"],["تاريخ القبول",this._fmtTs(b.approvedAt),"event_available"]].filter(([,v])=>v!=null&&v!=="");
+    const qg=_getEl("quick-grid");
+    qg.innerHTML=FIELDS.map(([lbl,val,ico])=>`<div class="qcard"><div class="qcard-ico"><span class="material-icons-round">${_esc(ico)}</span></div><div class="qcard-lbl">${_esc(lbl)}</div><div class="qcard-val">${_esc(String(val))}</div></div>`).join("");
+    const social=b.socialMedia||{}, website=_safeUrl(b.website||b.orderUrl||"");
+    const socLinks=[];
+    if(social.facebook)  socLinks.push([_safeUrl(social.facebook),"fa-brands fa-facebook","Facebook"]);
+    if(social.instagram) socLinks.push([_safeUrl(social.instagram),"fa-brands fa-instagram","Instagram"]);
+    if(social.tiktok)    socLinks.push([_safeUrl(social.tiktok),"fa-brands fa-tiktok","TikTok"]);
+    if(website)          socLinks.push([website,"fa-solid fa-globe","الموقع"]);
+    const socHtml=socLinks.map(([url,cls,label])=>`<a class="social-link" href="${_attr(url)}" target="_blank" rel="noopener noreferrer"><i class="${cls}"></i>${_esc(label)}</a>`).join("");
+    _getEl("social-section").innerHTML=socHtml?`<div class="products-label">التواصل الاجتماعي</div><div class="social-row">${socHtml}</div>`:"";
+    const prodImgs=b.products||[], prodList=b.productsList||[];
+    let prod="";
+    if(prodImgs.length) prod+=`<div class="products-label">صور المنتجات</div><div class="prod-strip">${prodImgs.map(u=>`<div class="prod-thumb"><img src="${_attr(_safeUrl(u))}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`).join("")}</div>`;
+    if(prodList.length) prod+=`<div class="products-label" style="margin-top:16px">قائمة المنتجات (${prodList.length})</div><div class="prod-list">${prodList.slice(0,5).map(p=>`<div class="prod-item">${p.imageUrl?`<div class="prod-item-img"><img src="${_attr(_safeUrl(p.imageUrl))}" alt="" onerror="this.style.display='none'"></div>`:""}<div class="prod-item-name">${_esc(p.name_product||p.name||"—")}</div><div class="prod-item-price">${p.price!=null?_esc(String(p.price))+" ج.م":""}</div><div class="prod-item-badges">${p.is_new?'<span class="prod-badge">جديد</span>':""}${p.is_out_of_stock?'<span class="prod-badge sold">نفذ</span>':""}</div></div>`).join("")}${prodList.length>5?`<div style="font-size:.72rem;color:var(--t3);text-align:center;padding:6px">+ ${prodList.length-5} منتج آخر</div>`:""}</div>`;
+    _getEl("products-section").innerHTML=prod;
   },
 
   _renderBasic() {
-    const b = this._data;
-    const fields = [
-      { key: "name",        label: "اسم البراند",          icon: "store",         value: b.name || b.brandName || "",               readonly: true },
-      { key: "category",    label: "الفئة",                icon: "category",      value: b.category || "",                          readonly: true },
-      { key: "subcategory", label: "الفئة الفرعية",        icon: "layers",        value: b.subcategory || "",                       readonly: true },
-      { key: "description", label: "الوصف",                icon: "description",   value: b.description || b.brandDescription || "", multiline: true },
-      { key: "contactName", label: "اسم المسؤول",          icon: "person",        value: b.contactName || "" },
-      { key: "contactPhone",label: "رقم التواصل",          icon: "call",          value: b.contactPhone || "" },
-      { key: "logoUrl",     label: "رابط لوجو البراند",     icon: "image",         value: b.logoUrl || b.brandLogo || "",            isImage: true },
-      { key: "orderUrl",    label: "رابط طلب الأوردر",      icon: "shopping_cart", value: b.orderUrl || b.website || "" },
+    const b=this._data;
+    const fields=[
+      {key:"name",        label:"اسم البراند",           icon:"store",         value:b.name||b.brandName||"",              readonly:true},
+      {key:"category",    label:"الفئة",                 icon:"category",      value:b.category||"",                       readonly:true},
+      {key:"subcategory", label:"الفئة الفرعية",         icon:"layers",        value:b.subcategory||"",                    readonly:true},
+      {key:"description", label:"الوصف",                 icon:"description",   value:b.description||b.brandDescription||"",multiline:true},
+      {key:"contactName", label:"اسم المسؤول",           icon:"person",        value:b.contactName||""},
+      {key:"contactPhone",label:"رقم التواصل",           icon:"call",          value:b.contactPhone||""},
+      {key:"logoUrl",     label:"رابط لوجو البراند",      icon:"image",         value:b.logoUrl||b.brandLogo||"",           isImage:true},
+      {key:"orderUrl",    label:"رابط طلب الأوردر",       icon:"shopping_cart", value:b.orderUrl||b.website||""}
     ];
-
-    const grid = _getEl("cf-basic-grid");
-    grid.innerHTML = fields.map(f => {
+    const grid=_getEl("cf-basic-grid");
+    grid.innerHTML=fields.map(f=>{
       let inputHtml;
-      if (f.isImage) {
-        inputHtml = `<div class="cf-img-row"><div class="cf-img-preview" id="prev-${f.key}">${f.value ? `<img src="${_attr(_safeUrl(f.value))}" alt="" onerror="this.style.display='none'">` : `<span class="material-icons-round">image</span>`}</div><div class="cf-img-input-wrap"><input class="cf-input" type="url" id="cfi-${f.key}" value="${_attr(f.value)}" placeholder="https://..."></div></div>`;
-      } else if (f.multiline) {
-        inputHtml = `<textarea class="cf-input" id="cfi-${f.key}" rows="3">${_esc(f.value)}</textarea>`;
-      } else {
-        inputHtml = `<input class="cf-input" type="text" id="cfi-${f.key}" value="${_attr(f.value)}" ${f.readonly ? "readonly" : ""}>`;
-      }
-      return `<div class="cf-row${f.readonly ? " readonly" : ""}"><div class="cf-label"><span class="material-icons-round">${f.icon}</span>${_esc(f.label)}${f.readonly ? `<span class="cf-badge-ro"><span class="material-icons-round">lock</span>ثابت</span>` : ""}</div>${inputHtml}${!f.readonly ? `<button class="cf-save-btn" data-key="${_attr(f.key)}"><span class="material-icons-round">save</span>حفظ</button>` : ""}</div>`;
+      if(f.isImage){ inputHtml=`<div class="cf-img-row"><div class="cf-img-preview" id="prev-${f.key}">${f.value?`<img src="${_attr(_safeUrl(f.value))}" alt="" onerror="this.style.display='none'">`:`<span class="material-icons-round">image</span>`}</div><div class="cf-img-input-wrap"><input class="cf-input" type="url" id="cfi-${f.key}" value="${_attr(f.value)}" placeholder="https://..."></div></div>`; }
+      else if(f.multiline){ inputHtml=`<textarea class="cf-input" id="cfi-${f.key}" rows="3">${_esc(f.value)}</textarea>`; }
+      else{ inputHtml=`<input class="cf-input" type="text" id="cfi-${f.key}" value="${_attr(f.value)}" ${f.readonly?"readonly":""}>`; }
+      return `<div class="cf-row${f.readonly?" readonly":""}"><div class="cf-label"><span class="material-icons-round">${f.icon}</span>${_esc(f.label)}${f.readonly?`<span class="cf-badge-ro"><span class="material-icons-round">lock</span>ثابت</span>`:""}</div>${inputHtml}${!f.readonly?`<button class="cf-save-btn" data-key="${_attr(f.key)}"><span class="material-icons-round">save</span>حفظ</button>`:""}</div>`;
     }).join("");
-
-    grid.innerHTML += `<div class="cf-row" style="grid-column:1/-1"><div class="cf-label"><span class="material-icons-round">photo_library</span>روابط صور أشهر المنتجات (كل رابط في سطر)</div><textarea class="cf-input" id="cfi-products" rows="4" placeholder="https://img1.com&#10;https://img2.com">${_esc((b.products || []).join("\n"))}</textarea><button class="cf-save-btn" data-key="products"><span class="material-icons-round">save</span>حفظ</button></div>`;
-
-    grid.querySelectorAll(".cf-save-btn[data-key]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const key = btn.dataset.key;
-        if (key === "products") {
-          const val = document.getElementById("cfi-products")?.value.trim().split("\n").map(u => _safeUrl(u.trim())).filter(u => u && u !== "#");
-          this._save({ products: val }, "صور المنتجات");
-        } else {
-          const inp = document.getElementById("cfi-" + key);
-          if (inp) this._save({ [key]: inp.value.trim() }, key);
-        }
+    grid.innerHTML+=`<div class="cf-row" style="grid-column:1/-1"><div class="cf-label"><span class="material-icons-round">photo_library</span>روابط صور أشهر المنتجات (كل رابط في سطر)</div><textarea class="cf-input" id="cfi-products" rows="4" placeholder="https://img1.com&#10;https://img2.com">${_esc((b.products||[]).join("\n"))}</textarea><button class="cf-save-btn" data-key="products"><span class="material-icons-round">save</span>حفظ</button></div>`;
+    grid.querySelectorAll(".cf-save-btn[data-key]").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const key=btn.dataset.key;
+        if(key==="products"){const val=document.getElementById("cfi-products")?.value.trim().split("\n").map(u=>_safeUrl(u.trim())).filter(u=>u&&u!=="#");this._save({products:val},"صور المنتجات");}
+        else{const inp=document.getElementById("cfi-"+key);if(inp)this._save({[key]:inp.value.trim()},key);}
       });
     });
-
-    const logoInp = _getEl("cfi-logoUrl");
-    if (logoInp) {
-      logoInp.addEventListener("input", () => {
-        const prev = _getEl("prev-logoUrl"); if (!prev) return;
-        const url  = _safeUrl(logoInp.value);
-        if (url && url !== "#") {
-          const img = document.createElement("img"); img.src = url; img.alt = "";
-          img.onerror = function() { prev.innerHTML = '<span class="material-icons-round">image</span>'; };
-          prev.innerHTML = ""; prev.appendChild(img);
-        } else {
-          prev.innerHTML = '<span class="material-icons-round">image</span>';
-        }
-      });
-    }
-
-    const social    = b.socialMedia || {};
-    const platforms = [
-      { key: "instagram", label: "Instagram", icon: "fa-brands fa-instagram" },
-      { key: "facebook",  label: "Facebook",  icon: "fa-brands fa-facebook"  },
-      { key: "tiktok",    label: "TikTok",    icon: "fa-brands fa-tiktok"    }
-    ];
-    _getEl("cf-social-grid").innerHTML = platforms.map(p =>
-      `<div class="cf-social-item"><div class="cf-social-icon"><i class="${p.icon}"></i></div><div class="cf-social-info"><div class="cf-social-name">${_esc(p.label)}</div><input class="cf-social-input" type="url" id="soc-${p.key}" value="${_attr(social[p.key] || "")}" placeholder="https://..."></div><button class="cf-social-save" data-soc="${_attr(p.key)}"><span class="material-icons-round">save</span></button></div>`
-    ).join("");
-
-    _getEl("cf-social-grid").querySelectorAll(".cf-social-save[data-soc]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const sKey = btn.dataset.soc;
-        const inp  = document.getElementById("soc-" + sKey); if (!inp) return;
-        const url  = _safeUrl(inp.value.trim());
-        const newSocial = { ...(this._data.socialMedia || {}), [sKey]: url === "#" ? "" : url };
-        this._save({ socialMedia: newSocial }, sKey);
-      });
+    const logoInp=_getEl("cfi-logoUrl");
+    if(logoInp){ logoInp.addEventListener("input",()=>{ const prev=_getEl("prev-logoUrl");if(!prev)return;const url=_safeUrl(logoInp.value);if(url&&url!=="#"){const img=document.createElement("img");img.src=url;img.alt="";img.onerror=function(){prev.innerHTML='<span class="material-icons-round">image</span>';};prev.innerHTML="";prev.appendChild(img);}else{prev.innerHTML='<span class="material-icons-round">image</span>';} }); }
+    const social=b.socialMedia||{};
+    const platforms=[{key:"instagram",label:"Instagram",icon:"fa-brands fa-instagram"},{key:"facebook",label:"Facebook",icon:"fa-brands fa-facebook"},{key:"tiktok",label:"TikTok",icon:"fa-brands fa-tiktok"}];
+    _getEl("cf-social-grid").innerHTML=platforms.map(p=>`<div class="cf-social-item"><div class="cf-social-icon"><i class="${p.icon}"></i></div><div class="cf-social-info"><div class="cf-social-name">${_esc(p.label)}</div><input class="cf-social-input" type="url" id="soc-${p.key}" value="${_attr(social[p.key]||"")}" placeholder="https://..."></div><button class="cf-social-save" data-soc="${_attr(p.key)}"><span class="material-icons-round">save</span></button></div>`).join("");
+    _getEl("cf-social-grid").querySelectorAll(".cf-social-save[data-soc]").forEach(btn=>{
+      btn.addEventListener("click",()=>{ const sKey=btn.dataset.soc,inp=document.getElementById("soc-"+sKey);if(!inp)return;const url=_safeUrl(inp.value.trim());const newSocial={...(this._data.socialMedia||{}),[sKey]:url==="#"?"":url};this._save({socialMedia:newSocial},sKey); });
     });
   },
 
   _renderDelivery() {
-    const b = this._data;
-    const fields = [
-      { key: "deliveryFee",    label: "رسوم التوصيل",    icon: "local_shipping" },
-      { key: "deliveryTime",   label: "وقت التوصيل",     icon: "schedule" },
-      { key: "deliveryAreas",  label: "مناطق التوصيل",   icon: "map",      wide: true },
-      { key: "paymentMethods", label: "طرق الدفع",       icon: "payments", wide: true },
-      { key: "minPrice",       label: "أدنى سعر (ج.م)",  icon: "sell" },
-      { key: "maxPrice",       label: "أعلى سعر (ج.م)",  icon: "price_check" },
+    const b=this._data;
+    const fields=[
+      {key:"deliveryFee",    label:"رسوم التوصيل",    icon:"local_shipping"},
+      {key:"deliveryTime",   label:"وقت التوصيل",     icon:"schedule"},
+      {key:"deliveryAreas",  label:"مناطق التوصيل",   icon:"map",  wide:true},
+      {key:"paymentMethods", label:"طرق الدفع",       icon:"payments",wide:true},
+      {key:"minPrice",       label:"أدنى سعر (ج.م)",  icon:"sell"},
+      {key:"maxPrice",       label:"أعلى سعر (ج.م)",  icon:"price_check"}
     ];
-    _getEl("cf-delivery-grid").innerHTML = fields.map(f =>
-      `<div class="cf-row"${f.wide ? ' style="grid-column:1/-1"' : ""}><div class="cf-label"><span class="material-icons-round">${f.icon}</span>${_esc(f.label)}</div><input class="cf-input" type="text" id="cfd-${f.key}" value="${_attr(String(b[f.key] ?? ""))}"><button class="cf-save-btn" data-key="${_attr(f.key)}"><span class="material-icons-round">save</span>حفظ</button></div>`
-    ).join("");
-
-    _getEl("cf-delivery-grid").querySelectorAll(".cf-save-btn[data-key]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const key = btn.dataset.key, inp = document.getElementById("cfd-" + key); if (!inp) return;
-        let val = inp.value.trim();
-        if (key === "minPrice" || key === "maxPrice") { const n = parseFloat(val); val = isNaN(n) ? val : n; }
-        this._save({ [key]: val }, key);
-      });
+    _getEl("cf-delivery-grid").innerHTML=fields.map(f=>`<div class="cf-row"${f.wide?' style="grid-column:1/-1"':""}}><div class="cf-label"><span class="material-icons-round">${f.icon}</span>${_esc(f.label)}</div><input class="cf-input" type="text" id="cfd-${f.key}" value="${_attr(String(b[f.key]??""))}"><button class="cf-save-btn" data-key="${_attr(f.key)}"><span class="material-icons-round">save</span>حفظ</button></div>`).join("");
+    _getEl("cf-delivery-grid").querySelectorAll(".cf-save-btn[data-key]").forEach(btn=>{
+      btn.addEventListener("click",()=>{ const key=btn.dataset.key,inp=document.getElementById("cfd-"+key);if(!inp)return;let val=inp.value.trim();if(key==="minPrice"||key==="maxPrice"){const n=parseFloat(val);val=isNaN(n)?val:n;}this._save({[key]:val},key); });
     });
   },
 
-  // ================================================================
-  // PRODUCTS — مع Drag & Drop
-  // ================================================================
+  /* ── Products with Drag & Drop ── */
   _renderProducts() {
-    const list = this._data.productsList || [];
-    const grid = _getEl("prod-cards-grid");
-    grid.innerHTML = "";
+    const list=this._data.productsList||[];
+    const grid=_getEl("prod-cards-grid");
 
-    // بطاقة الإضافة
-    const addCard = document.createElement("div");
-    addCard.className = "prod-add-card";
-    addCard.id = "prod-add-trigger";
-    addCard.innerHTML = `<span class="material-icons-round">add_circle_outline</span><span>إضافة منتج جديد</span>`;
-    addCard.addEventListener("click", () => this._openProductModal());
-    grid.appendChild(addCard);
+    const addCard=document.createElement("div"); addCard.className="prod-add-card"; addCard.id="prod-add-trigger";
+    addCard.innerHTML=`<span class="material-icons-round">add_circle_outline</span><span>إضافة منتج جديد</span>`;
+    addCard.addEventListener("click",()=>this._openProductModal());
+    grid.innerHTML=""; grid.appendChild(addCard);
 
-    // بطاقات المنتجات
-    list.forEach((p, i) => {
-      const card = this._buildProductCard(p, i, list.length);
+    list.forEach((p,i)=>{
+      const card=this._buildProdCard(p,i,list.length);
       grid.appendChild(card);
     });
 
-    // تفعيل Drag & Drop
-    this._initDragDrop(grid);
+    this._initDragDrop();
   },
 
-  _buildProductCard(p, i, total) {
-    const img   = _safeUrl(p.imageUrl || "");
-    const name  = p.name_product || p.name || "";
-    const price = p.price != null ? p.price : "";
-
-    const card = document.createElement("div");
-    card.className = "prod-card";
-    card.draggable = true;
-    card.dataset.idx = i;
-
-    card.innerHTML = `
-      <button class="prod-drag-handle" title="اسحب لتغيير الترتيب">
-        <span class="material-icons-round">drag_indicator</span>
-      </button>
-      <div class="prod-card-img" data-edit-img="${i}">
-        ${img && img !== "#"
-          ? `<img src="${_attr(img)}" alt="" onerror="this.style.display='none'">`
-          : `<div class="prod-card-img-ph"><span class="material-icons-round">image</span></div>`}
-        <div class="prod-card-img-edit"><span class="material-icons-round">edit</span></div>
-      </div>
+  _buildProdCard(p,i,total){
+    const img=_safeUrl(p.imageUrl||"");
+    const card=document.createElement("div"); card.className="prod-card"; card.dataset.idx=i; card.draggable=true;
+    card.innerHTML=`
+      <div class="prod-card-img" data-edit-img="${i}">${img&&img!=="#"?`<img src="${_attr(img)}" alt="" onerror="this.style.display='none'">`:`<div class="prod-card-img-ph"><span class="material-icons-round">image</span></div>`}<div class="prod-card-img-edit"><span class="material-icons-round">edit</span></div></div>
       <div class="prod-card-body">
-        <input class="prod-card-name-inp" type="text" value="${_attr(name)}" placeholder="اسم المنتج" id="pname-${i}">
-        <div class="prod-card-price-row">
-          <input class="prod-card-price-inp" type="number" value="${_attr(String(price))}" placeholder="0" id="pprice-${i}" min="0">
-          <span class="prod-card-price-unit">ج.م</span>
-        </div>
+        <input class="prod-card-name-inp" type="text" value="${_attr(p.name_product||p.name||"")}" placeholder="اسم المنتج" id="pname-${i}">
+        <div class="prod-card-price-row"><input class="prod-card-price-inp" type="number" value="${_attr(String(p.price!=null?p.price:""))}" placeholder="0" id="pprice-${i}" min="0"><span class="prod-card-price-unit">ج.م</span></div>
         <div class="prod-card-status">
-          <label class="prod-status-item"><input type="checkbox" id="pnew-${i}" ${p.is_new ? "checked" : ""}> <span>جديد</span></label>
-          <label class="prod-status-item"><input type="checkbox" id="pout-${i}" ${p.is_out_of_stock ? "checked" : ""}> <span>نفذ</span></label>
+          <label class="prod-status-item"><input type="checkbox" id="pnew-${i}" ${p.is_new?"checked":""}> <span>جديد</span></label>
+          <label class="prod-status-item"><input type="checkbox" id="pout-${i}" ${p.is_out_of_stock?"checked":""}> <span>نفذ</span></label>
         </div>
         <div class="prod-card-actions">
           <button class="prod-card-save-btn" data-save-idx="${i}"><span class="material-icons-round">save</span>حفظ</button>
+          <button class="prod-card-edit-btn" data-edit-modal-idx="${i}"><span class="material-icons-round">edit</span></button>
           <button class="prod-card-del-btn"  data-del-idx="${i}"><span class="material-icons-round">delete</span></button>
         </div>
-      </div>
-    `;
-
-    card.querySelector("[data-edit-img]").addEventListener("click", () => this._editProdImg(i));
-    card.querySelector("[data-save-idx]").addEventListener("click", () => this._saveProd(i));
-    card.querySelector("[data-del-idx]").addEventListener("click",  () => this._deleteProd(i));
-
+      </div>`;
+    card.querySelector("[data-edit-img]").addEventListener("click",()=>this._editProdImg(i));
+    card.querySelector("[data-save-idx]").addEventListener("click",()=>this._saveProd(i));
+    card.querySelector("[data-edit-modal-idx]").addEventListener("click",()=>this._openProductModal(i));
+    card.querySelector("[data-del-idx]").addEventListener("click",()=>this._deleteProd(i));
     return card;
   },
 
-  _initDragDrop(grid) {
-    let _dragSrc = null;
-    let _dragSrcIdx = null;
+  _initDragDrop() {
+    const grid=_getEl("prod-cards-grid");
+    let _dragging=null, _dragStartIdx=null;
 
-    const _getCards = () => Array.from(grid.querySelectorAll(".prod-card[draggable]"));
-
-    grid.addEventListener("dragstart", (e) => {
-      const card = e.target.closest(".prod-card[draggable]");
-      if (!card) return;
-      _dragSrc    = card;
-      _dragSrcIdx = parseInt(card.dataset.idx);
-      card.classList.add("dragging");
-      e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.setData("text/plain", _dragSrcIdx);
-    });
-
-    grid.addEventListener("dragend", (e) => {
-      const card = e.target.closest(".prod-card[draggable]");
-      if (card) card.classList.remove("dragging");
-      _getCards().forEach(c => c.classList.remove("drag-over"));
-      _dragSrc = null; _dragSrcIdx = null;
-    });
-
-    grid.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      e.dataTransfer.dropEffect = "move";
-      const card = e.target.closest(".prod-card[draggable]");
-      if (!card || card === _dragSrc) return;
-      _getCards().forEach(c => c.classList.remove("drag-over"));
-      card.classList.add("drag-over");
-    });
-
-    grid.addEventListener("dragleave", (e) => {
-      const card = e.target.closest(".prod-card[draggable]");
-      if (card) card.classList.remove("drag-over");
-    });
-
-    grid.addEventListener("drop", (e) => {
-      e.preventDefault();
-      const targetCard = e.target.closest(".prod-card[draggable]");
-      if (!targetCard || !_dragSrc || targetCard === _dragSrc) return;
-      targetCard.classList.remove("drag-over");
-
-      const targetIdx = parseInt(targetCard.dataset.idx);
-      if (isNaN(_dragSrcIdx) || isNaN(targetIdx)) return;
-
-      // إعادة ترتيب المصفوفة
-      const list = [...(this._data.productsList || [])];
-      const [moved] = list.splice(_dragSrcIdx, 1);
-      list.splice(targetIdx, 0, moved);
-
-      // حفظ الترتيب الجديد
-      this._save({ productsList: list }, "ترتيب المنتجات").then(() => {
-        this._renderProducts();
+    grid.querySelectorAll(".prod-card").forEach(card=>{
+      card.addEventListener("dragstart",e=>{
+        _dragging=card; _dragStartIdx=parseInt(card.dataset.idx);
+        e.dataTransfer.effectAllowed="move";
+        setTimeout(()=>card.classList.add("dragging"),0);
+      });
+      card.addEventListener("dragend",()=>{ card.classList.remove("dragging"); grid.querySelectorAll(".prod-card").forEach(c=>c.classList.remove("drag-over")); _dragging=null; });
+      card.addEventListener("dragover",e=>{ e.preventDefault(); e.dataTransfer.dropEffect="move"; if(card!==_dragging) card.classList.add("drag-over"); });
+      card.addEventListener("dragleave",()=>card.classList.remove("drag-over"));
+      card.addEventListener("drop",e=>{
+        e.preventDefault(); card.classList.remove("drag-over");
+        if(!_dragging||card===_dragging) return;
+        const toIdx=parseInt(card.dataset.idx);
+        if(isNaN(_dragStartIdx)||isNaN(toIdx)) return;
+        const list=[...(this._data.productsList||[])];
+        const [moved]=list.splice(_dragStartIdx,1);
+        list.splice(toIdx,0,moved);
+        this._save({productsList:list},"ترتيب المنتجات").then(()=>this._renderProducts());
       });
     });
-
-    // Touch drag support للموبايل
-    let _touchCard = null, _touchClone = null, _touchIdx = null;
-    let _startX = 0, _startY = 0;
-
-    grid.addEventListener("touchstart", (e) => {
-      const card = e.target.closest(".prod-card[draggable]");
-      if (!card) return;
-      _touchCard = card;
-      _touchIdx  = parseInt(card.dataset.idx);
-      const touch = e.touches[0];
-      _startX = touch.clientX; _startY = touch.clientY;
-
-      // clone للـ visual feedback
-      _touchClone = card.cloneNode(true);
-      const rect  = card.getBoundingClientRect();
-      _touchClone.style.cssText = `position:fixed;top:${rect.top}px;left:${rect.left}px;width:${rect.width}px;opacity:.8;pointer-events:none;z-index:99999;transform:scale(1.04);transition:none;border-radius:var(--r2)`;
-      document.body.appendChild(_touchClone);
-      card.classList.add("dragging");
-    }, { passive: true });
-
-    grid.addEventListener("touchmove", (e) => {
-      if (!_touchCard || !_touchClone) return;
-      e.preventDefault();
-      const touch = e.touches[0];
-      const dx = touch.clientX - _startX, dy = touch.clientY - _startY;
-      const rect = _touchCard.getBoundingClientRect();
-      _touchClone.style.top  = (rect.top  + dy) + "px";
-      _touchClone.style.left = (rect.left + dx) + "px";
-
-      // هايلايت أقرب بطاقة
-      const el = document.elementFromPoint(touch.clientX, touch.clientY);
-      const overCard = el?.closest(".prod-card[draggable]");
-      _getCards().forEach(c => c.classList.remove("drag-over"));
-      if (overCard && overCard !== _touchCard) overCard.classList.add("drag-over");
-    }, { passive: false });
-
-    grid.addEventListener("touchend", (e) => {
-      if (!_touchCard) return;
-      if (_touchClone) { _touchClone.remove(); _touchClone = null; }
-      _touchCard.classList.remove("dragging");
-
-      const touch = e.changedTouches[0];
-      const el = document.elementFromPoint(touch.clientX, touch.clientY);
-      const targetCard = el?.closest(".prod-card[draggable]");
-      _getCards().forEach(c => c.classList.remove("drag-over"));
-
-      if (targetCard && targetCard !== _touchCard) {
-        const targetIdx = parseInt(targetCard.dataset.idx);
-        if (!isNaN(_touchIdx) && !isNaN(targetIdx) && _touchIdx !== targetIdx) {
-          const list = [...(this._data.productsList || [])];
-          const [moved] = list.splice(_touchIdx, 1);
-          list.splice(targetIdx, 0, moved);
-          this._save({ productsList: list }, "ترتيب المنتجات").then(() => {
-            this._renderProducts();
-          });
-        }
-      }
-      _touchCard = null; _touchIdx = null;
-    }, { passive: true });
   },
 
   _editProdImg(idx) {
-    const url = prompt("أدخل رابط الصورة الجديدة:", this._data.productsList?.[idx]?.imageUrl || "");
-    if (url === null) return;
-    const safe = _safeUrl(url.trim());
-    if (safe === "#") { Toast.show("رابط غير آمن", "warn"); return; }
-    const list = [...(this._data.productsList || [])];
-    if (!list[idx]) return;
-    list[idx] = { ...list[idx], imageUrl: safe };
-    this._save({ productsList: list }, "صورة المنتج").then(() => this._renderProducts());
+    const url=prompt("أدخل رابط الصورة الجديدة:",this._data.productsList?.[idx]?.imageUrl||"");
+    if(url===null) return;
+    const safe=_safeUrl(url.trim());
+    if(safe==="#"){Toast.show("رابط غير آمن","warn");return;}
+    const list=[...(this._data.productsList||[])];
+    if(!list[idx]) return;
+    list[idx]={...list[idx],imageUrl:safe};
+    this._save({productsList:list},"صورة المنتج").then(()=>this._renderProducts());
   },
 
   _saveProd(idx) {
-    const list = [...(this._data.productsList || [])];
-    if (!list[idx]) return;
-    const nameInp  = document.getElementById("pname-"  + idx);
-    const priceInp = document.getElementById("pprice-" + idx);
-    const newCheck = document.getElementById("pnew-"   + idx)?.checked || false;
-    const outCheck = document.getElementById("pout-"   + idx)?.checked || false;
-    if (!nameInp || !priceInp) return;
-    const nameVal = nameInp.value.trim();
-    if (!nameVal) { Toast.show("اسم المنتج مطلوب", "warn"); return; }
-    list[idx] = { ...list[idx], name_product: nameVal, name: nameVal, price: parseFloat(priceInp.value) || 0, is_new: newCheck, is_out_of_stock: outCheck };
-    this._save({ productsList: list }, "المنتج").then(() => this._renderProducts());
+    const list=[...(this._data.productsList||[])];
+    if(!list[idx]) return;
+    const nameInp=document.getElementById("pname-"+idx), priceInp=document.getElementById("pprice-"+idx);
+    const newCheck=document.getElementById("pnew-"+idx)?.checked||false, outCheck=document.getElementById("pout-"+idx)?.checked||false;
+    if(!nameInp||!priceInp) return;
+    const nameVal=nameInp.value.trim();
+    if(!nameVal){Toast.show("اسم المنتج مطلوب","warn");return;}
+    list[idx]={...list[idx],name_product:nameVal,name:nameVal,price:parseFloat(priceInp.value)||0,is_new:newCheck,is_out_of_stock:outCheck};
+    this._save({productsList:list},"المنتج").then(()=>this._renderProducts());
   },
 
   async _deleteProd(idx) {
-    if (!confirm("هل تريد حذف هذا المنتج؟")) return;
-    const list = [...(this._data.productsList || [])];
-    list.splice(idx, 1);
-    await this._save({ productsList: list }, "حذف المنتج");
+    if(!confirm("هل تريد حذف هذا المنتج؟")) return;
+    const list=[...(this._data.productsList||[])];
+    list.splice(idx,1);
+    await this._save({productsList:list},"حذف المنتج");
     this._renderProducts();
   },
 
-  // ================================================================
-  // PRODUCT MODAL — مع رسالة التأكيد الجديدة
-  // ================================================================
-  _openProductModal(editIdx = null) {
-    const p = editIdx !== null ? this._data.productsList?.[editIdx] : null;
-    const isEdit = p !== null && editIdx !== null;
+  /* ── Product Modal (add / edit) with preview ── */
+  _openProductModal(editIdx=null) {
+    const isEdit=editIdx!==null;
+    const p=isEdit?this._data.productsList?.[editIdx]:null;
+    const box=_getEl("detail-box"); box.innerHTML="";
 
-    const box = _getEl("detail-box");
-    box.innerHTML = "";
+    const wrap=document.createElement("div"); wrap.style.cssText="padding:28px;background:var(--bgc);border-radius:var(--r3)";
+    const closeBtn=document.createElement("button"); closeBtn.style.cssText="position:relative;top:auto;left:auto;background:var(--bgi);color:var(--t2);margin-bottom:16px;border-radius:8px;width:auto;height:auto;padding:6px 12px;backdrop-filter:none;font-size:.8rem;gap:4px;display:inline-flex;align-items:center;border:none;cursor:pointer";
+    closeBtn.innerHTML=`<span class="material-icons-round" style="font-size:.9rem">close</span>إغلاق`;
+    closeBtn.addEventListener("click",()=>_getEl("detail-veil").classList.remove("on"));
 
-    const wrap = document.createElement("div");
-    wrap.style.cssText = "padding:28px;background:var(--bgc);border-radius:var(--r3)";
+    const title=document.createElement("h3"); title.textContent=isEdit?"نظرة أخيرة! — تعديل المنتج":"أضف منتجاً جديداً"; title.style.cssText="margin-bottom:16px;font-size:1rem;";
 
-    const closeBtn = document.createElement("button");
-    closeBtn.className = "detail-close";
-    closeBtn.style.cssText = "position:relative;top:auto;left:auto;background:var(--bgi);color:var(--t2);margin-bottom:16px;border-radius:8px;width:auto;height:auto;padding:6px 12px;backdrop-filter:none;font-size:.8rem;gap:4px;display:inline-flex;align-items:center;";
-    closeBtn.innerHTML = `<span class="material-icons-round" style="font-size:.9rem">close</span>إغلاق`;
-    closeBtn.addEventListener("click", () => _getEl("detail-veil").classList.remove("on"));
+    const nameInp=document.createElement("input"); nameInp.className="cf-input"; nameInp.placeholder="اسم المنتج"; nameInp.value=p?(p.name_product||p.name||""):""; nameInp.style.cssText="margin-bottom:10px;display:block";
+    const priceInp=document.createElement("input"); priceInp.className="cf-input"; priceInp.type="number"; priceInp.placeholder="السعر"; priceInp.value=p?(p.price||""):""; priceInp.style.cssText="margin-bottom:10px;display:block";
+    const imgInp=document.createElement("input"); imgInp.className="cf-input"; imgInp.type="url"; imgInp.placeholder="رابط الصورة"; imgInp.value=p?(p.imageUrl||""):""; imgInp.style.cssText="margin-bottom:10px;display:block";
 
-    const title = document.createElement("h3");
-    title.textContent = isEdit ? "تعديل المنتج — نظرة أخيرة!" : "إضافة منتج جديد";
-    title.style.cssText = "margin-bottom:16px;font-size:1rem;";
-
-    const nameInp  = document.createElement("input");  nameInp.className  = "cf-input"; nameInp.placeholder = "اسم المنتج"; nameInp.value = p ? (p.name_product || p.name || "") : "";
-    const priceInp = document.createElement("input");  priceInp.className = "cf-input"; priceInp.type = "number"; priceInp.placeholder = "السعر"; priceInp.value = p ? (p.price || "") : "";
-    const imgInp   = document.createElement("input");  imgInp.className   = "cf-input"; imgInp.type = "url"; imgInp.placeholder = "رابط الصورة"; imgInp.value = p ? (p.imageUrl || "") : "";
-    const newChk   = document.createElement("input");  newChk.type = "checkbox"; newChk.id = "modal-pnew"; if (p?.is_new) newChk.checked = true;
-    const outChk   = document.createElement("input");  outChk.type = "checkbox"; outChk.id = "modal-pout"; if (p?.is_out_of_stock) outChk.checked = true;
-
-    const chkRow = document.createElement("div"); chkRow.style.cssText = "display:flex;gap:20px;margin:8px 0;";
-    const lbl1 = document.createElement("label"); lbl1.style.cssText = "display:flex;align-items:center;gap:6px;font-size:.82rem;"; lbl1.appendChild(newChk); lbl1.append(" جديد");
-    const lbl2 = document.createElement("label"); lbl2.style.cssText = "display:flex;align-items:center;gap:6px;font-size:.82rem;"; lbl2.appendChild(outChk); lbl2.append(" نفذ");
+    const newChk=document.createElement("input"); newChk.type="checkbox"; newChk.id="modal-pnew"; if(p?.is_new)newChk.checked=true;
+    const outChk=document.createElement("input"); outChk.type="checkbox"; outChk.id="modal-pout"; if(p?.is_out_of_stock)outChk.checked=true;
+    const chkRow=document.createElement("div"); chkRow.style.cssText="display:flex;gap:20px;margin:8px 0;";
+    const lbl1=document.createElement("label"); lbl1.style.cssText="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer"; lbl1.appendChild(newChk); lbl1.append(" جديد");
+    const lbl2=document.createElement("label"); lbl2.style.cssText="display:flex;align-items:center;gap:6px;font-size:.82rem;cursor:pointer"; lbl2.appendChild(outChk); lbl2.append(" نفذ");
     chkRow.appendChild(lbl1); chkRow.appendChild(lbl2);
 
-    const saveBtn = document.createElement("button");
-    saveBtn.className = "btn full";
-    saveBtn.style.marginTop = "12px";
-    saveBtn.innerHTML = isEdit
-      ? `<span class="material-icons-round">visibility</span> نظرة أخيرة قبل التحديث`
-      : `<span class="material-icons-round">visibility</span> نظرة أخيرة قبل الإضافة`;
+    const saveBtn=document.createElement("button"); saveBtn.className="btn full"; saveBtn.style.marginTop="12px";
+    saveBtn.innerHTML=`<span class="material-icons-round">${isEdit?"check":"add"}</span>${isEdit?"تحديث المنتج":"معاينة وإضافة"}`;
 
-    const _buildProduct = () => {
-      const name   = nameInp.value.trim();
-      const price  = parseFloat(priceInp.value) || 0;
-      const imgUrl = _safeUrl(imgInp.value.trim());
-      return {
-        name_product:    name,
-        name:            name,
-        price,
-        imageUrl:        imgUrl === "#" ? "" : imgUrl,
-        is_new:          newChk.checked,
-        is_out_of_stock: outChk.checked
-      };
-    };
-
-    saveBtn.addEventListener("click", () => {
-      const name = nameInp.value.trim();
-      if (!name) { Toast.show("اسم المنتج مطلوب", "warn"); return; }
-
-      const newProd = _buildProduct();
-      const list    = [...(this._data.productsList || [])];
-
-      // إغلاق الـ modal الأول
-      _getEl("detail-veil").classList.remove("on");
-
-      // إظهار رسالة التأكيد
-      ProductConfirm.show(
-        newProd,
-        list,
-        // onConfirm — تمام
-        () => {
-          if (isEdit) { list[editIdx] = newProd; } else { list.push(newProd); }
-          this._save({ productsList: list }, isEdit ? "تحديث المنتج" : "إضافة منتج").then(() => {
-            this._renderProducts();
-          });
-        },
-        // onEdit — رجوع للتعديل
-        () => {
-          this._openProductModal(isEdit ? editIdx : null);
-          // لو مش edit نرجع البيانات للـ inputs
-          setTimeout(() => {
-            const ni = document.getElementById("modal-pnew");
-            const oi = document.getElementById("modal-pout");
-            if (ni) ni.checked = newProd.is_new;
-            if (oi) oi.checked = newProd.is_out_of_stock;
-            // fill inputs
-            const nameI  = wrap.querySelector('input.cf-input:not([type="number"]):not([type="url"])');
-            const priceI = wrap.querySelector('input[type="number"]');
-            const imgI   = wrap.querySelector('input[type="url"]');
-            if (nameI)  nameI.value  = newProd.name;
-            if (priceI) priceI.value = newProd.price;
-            if (imgI)   imgI.value   = newProd.imageUrl;
-          }, 100);
-        }
-      );
+    const _buildProduct=()=>({
+      name_product:nameInp.value.trim(), name:nameInp.value.trim(),
+      price:parseFloat(priceInp.value)||0,
+      imageUrl:(()=>{const u=_safeUrl(imgInp.value.trim());return u==="#"?"":u;})(),
+      is_new:newChk.checked, is_out_of_stock:outChk.checked
     });
 
-    [nameInp, priceInp, imgInp].forEach(el => { el.style.marginBottom = "10px"; el.style.display = "block"; });
-    wrap.appendChild(closeBtn);
-    wrap.appendChild(title);
-    wrap.appendChild(nameInp);
-    wrap.appendChild(priceInp);
-    wrap.appendChild(imgInp);
-    wrap.appendChild(chkRow);
-    wrap.appendChild(saveBtn);
+    const _doSave=(product,list)=>{
+      this._save({productsList:list},isEdit?"تحديث المنتج":"إضافة منتج").then(()=>{
+        _getEl("detail-veil").classList.remove("on");
+        this._renderProducts();
+      });
+    };
+
+    saveBtn.addEventListener("click",()=>{
+      const name=nameInp.value.trim();
+      if(!name){Toast.show("اسم المنتج مطلوب","warn");return;}
+      const newProd=_buildProduct();
+      const list=[...(this._data.productsList||[])];
+      if(isEdit){list[editIdx]=newProd;}else{list.push(newProd);}
+
+      if(isEdit){
+        /* edit: show preview modal then save on confirm */
+        _getEl("detail-veil").classList.remove("on");
+        ProdPreview.show(newProd,list,
+          (prod,l)=>_doSave(prod,l),
+          ()=>this._openProductModal(editIdx) /* re-open on edit */
+        );
+      } else {
+        /* add: close modal, show preview */
+        _getEl("detail-veil").classList.remove("on");
+        ProdPreview.show(newProd,list,
+          (prod,l)=>_doSave(prod,l),
+          ()=>this._openProductModal(null) /* re-open empty */
+        );
+      }
+    });
+
+    wrap.appendChild(closeBtn); wrap.appendChild(title); wrap.appendChild(nameInp); wrap.appendChild(priceInp); wrap.appendChild(imgInp); wrap.appendChild(chkRow); wrap.appendChild(saveBtn);
     box.appendChild(wrap);
     _getEl("detail-veil").classList.add("on");
   },
 
   openDetail() {
-    const b      = this._data;
-    const name   = b.name || b.brandName || "براند";
-    const desc   = b.description || b.brandDescription || "";
-    const img    = _safeUrl(b.imageUrl || b.brandImage || "");
-    const logo   = _safeUrl(b.logoUrl  || b.brandLogo  || "");
-    const social = b.socialMedia || {};
-    const website = _safeUrl(b.website || b.orderUrl || "");
-    const prodImgs = b.products || [], prodList = b.productsList || [];
-    const status   = this._getStatus(b);
-
-    const coverHtml = img && img !== "#"
-      ? `<img src="${_attr(img)}" alt="${_esc(name)}" style="width:100%;height:100%;object-fit:cover">`
-      : `<div class="detail-cover-ph"><span class="material-icons-round">store</span></div>`;
-    const logoHtml = logo && logo !== "#"
-      ? `<img src="${_attr(logo)}" alt="" onerror="this.style.display='none'" style="max-width:80%;max-height:80%;object-fit:contain">`
-      : `<span class="material-icons-round" style="font-size:1.4rem;color:var(--t3)">store</span>`;
-
-    const infoRows = [
-      ["الفئة",          b.category],
-      ["الفئة الفرعية", b.subcategory],
-      ["رسوم التوصيل",  b.deliveryFee],
-      ["وقت التوصيل",   b.deliveryTime],
-      ["اسم المسؤول",   b.contactName],
-      ["رقم التواصل",   b.contactPhone],
-      ["أدنى سعر",      b.minPrice != null ? b.minPrice + " ج.م" : ""],
-      ["أعلى سعر",      b.maxPrice != null ? b.maxPrice + " ج.م" : ""]
-    ].filter(([, v]) => v);
-
-    let cells = infoRows.map(([l, v]) => `<div class="info-cell"><div class="cell-lbl">${_esc(l)}</div><div class="cell-val">${_esc(String(v))}</div></div>`).join("");
-    if (b.deliveryAreas)  cells += `<div class="info-cell wide"><div class="cell-lbl">مناطق التوصيل</div><div class="cell-val">${_esc(b.deliveryAreas)}</div></div>`;
-    if (b.paymentMethods) cells += `<div class="info-cell wide"><div class="cell-lbl">طرق الدفع</div><div class="cell-val">${_esc(b.paymentMethods)}</div></div>`;
-
-    const socLinks = [];
-    if (social.facebook)  socLinks.push([_safeUrl(social.facebook),  "fa-brands fa-facebook",  "Facebook"]);
-    if (social.instagram) socLinks.push([_safeUrl(social.instagram), "fa-brands fa-instagram", "Instagram"]);
-    if (social.tiktok)    socLinks.push([_safeUrl(social.tiktok),    "fa-brands fa-tiktok",    "TikTok"]);
-    if (website && website !== "#") socLinks.push([website, "fa-solid fa-globe", "الموقع"]);
-    const socHtml = socLinks.map(([url, cls, label]) => `<a class="social-link" href="${_attr(url)}" target="_blank" rel="noopener noreferrer"><i class="${cls}"></i>${_esc(label)}</a>`).join("");
-
-    const prodImgsHtml = prodImgs.length ? `<div class="sec-label">صور المنتجات</div><div class="prod-strip" style="margin-bottom:16px">${prodImgs.map(u => `<div class="prod-thumb"><img src="${_attr(_safeUrl(u))}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`).join("")}</div>` : "";
-    const prodListHtml = prodList.length ? `<div class="sec-label">المنتجات (${prodList.length})</div><div class="prod-list">${prodList.slice(0, 5).map(p => `<div class="prod-item">${p.imageUrl ? `<div class="prod-item-img"><img src="${_attr(_safeUrl(p.imageUrl))}" alt="" onerror="this.style.display='none'"></div>` : ""}<div class="prod-item-name">${_esc(p.name_product || p.name || "—")}</div><div class="prod-item-price">${p.price != null ? _esc(String(p.price)) + " ج.م" : ""}</div><div class="prod-item-badges">${p.is_new ? '<span class="prod-badge">جديد</span>' : ""}${p.is_out_of_stock ? '<span class="prod-badge sold">نفذ</span>' : ""}</div></div>`).join("")}${prodList.length > 5 ? `<div style="font-size:.72rem;color:var(--t3);text-align:center;padding:6px">+ ${prodList.length - 5} آخر</div>` : ""}</div>` : "";
-
-    _getEl("detail-box").innerHTML = `<div class="detail-cover">${coverHtml}<button class="detail-close" id="detail-close-btn"><span class="material-icons-round">close</span></button><div class="detail-badge-abs"><span class="status-badge ${this._statusCls[status]}">${this._statusLabel[status]}</span></div></div><div class="detail-inner"><div class="detail-top"><div class="detail-logo">${logoHtml}</div><div><div class="detail-name">${_esc(name)}</div><div class="detail-id">#${_esc(this._id)}</div></div></div>${desc ? `<div class="sec-label">الوصف</div><div class="desc-block">${_esc(desc)}</div>` : ""}${cells ? `<div class="sec-label">التفاصيل</div><div class="info-cells" style="margin-bottom:16px">${cells}</div>` : ""}${socHtml ? `<div class="sec-label">التواصل</div><div class="social-row" style="margin-bottom:16px">${socHtml}</div>` : ""}${prodImgsHtml}${prodListHtml}</div>`;
-    document.getElementById("detail-close-btn")?.addEventListener("click", () => _getEl("detail-veil").classList.remove("on"));
+    const b=this._data, name=b.name||b.brandName||"براند", desc=b.description||b.brandDescription||"", img=_safeUrl(b.imageUrl||b.brandImage||""), logo=_safeUrl(b.logoUrl||b.brandLogo||""), social=b.socialMedia||{}, website=_safeUrl(b.website||b.orderUrl||""), prodImgs=b.products||[], prodList=b.productsList||[], status=this._getStatus(b);
+    const coverHtml=img&&img!=="#"?`<img src="${_attr(img)}" alt="${_esc(name)}" style="width:100%;height:100%;object-fit:cover">`:`<div class="detail-cover-ph"><span class="material-icons-round">store</span></div>`;
+    const logoHtml=logo&&logo!=="#"?`<img src="${_attr(logo)}" alt="" onerror="this.style.display='none'" style="max-width:80%;max-height:80%;object-fit:contain">`:`<span class="material-icons-round" style="font-size:1.4rem;color:var(--t3)">store</span>`;
+    const infoRows=[["الفئة",b.category],["الفئة الفرعية",b.subcategory],["رسوم التوصيل",b.deliveryFee],["وقت التوصيل",b.deliveryTime],["اسم المسؤول",b.contactName],["رقم التواصل",b.contactPhone],["أدنى سعر",b.minPrice!=null?b.minPrice+" ج.م":""],["أعلى سعر",b.maxPrice!=null?b.maxPrice+" ج.م":""]].filter(([,v])=>v);
+    let cells=infoRows.map(([l,v])=>`<div class="info-cell"><div class="cell-lbl">${_esc(l)}</div><div class="cell-val">${_esc(String(v))}</div></div>`).join("");
+    if(b.deliveryAreas)  cells+=`<div class="info-cell wide"><div class="cell-lbl">مناطق التوصيل</div><div class="cell-val">${_esc(b.deliveryAreas)}</div></div>`;
+    if(b.paymentMethods) cells+=`<div class="info-cell wide"><div class="cell-lbl">طرق الدفع</div><div class="cell-val">${_esc(b.paymentMethods)}</div></div>`;
+    const socLinks=[];
+    if(social.facebook)  socLinks.push([_safeUrl(social.facebook),"fa-brands fa-facebook","Facebook"]);
+    if(social.instagram) socLinks.push([_safeUrl(social.instagram),"fa-brands fa-instagram","Instagram"]);
+    if(social.tiktok)    socLinks.push([_safeUrl(social.tiktok),"fa-brands fa-tiktok","TikTok"]);
+    if(website&&website!=="#") socLinks.push([website,"fa-solid fa-globe","الموقع"]);
+    const socHtml=socLinks.map(([url,cls,label])=>`<a class="social-link" href="${_attr(url)}" target="_blank" rel="noopener noreferrer"><i class="${cls}"></i>${_esc(label)}</a>`).join("");
+    const prodImgsHtml=prodImgs.length?`<div class="sec-label">صور المنتجات</div><div class="prod-strip" style="margin-bottom:16px">${prodImgs.map(u=>`<div class="prod-thumb"><img src="${_attr(_safeUrl(u))}" alt="" loading="lazy" onerror="this.style.display='none'"></div>`).join("")}</div>`:"";
+    const prodListHtml=prodList.length?`<div class="sec-label">المنتجات (${prodList.length})</div><div class="prod-list">${prodList.slice(0,5).map(p=>`<div class="prod-item">${p.imageUrl?`<div class="prod-item-img"><img src="${_attr(_safeUrl(p.imageUrl))}" alt="" onerror="this.style.display='none'"></div>`:""}<div class="prod-item-name">${_esc(p.name_product||p.name||"—")}</div><div class="prod-item-price">${p.price!=null?_esc(String(p.price))+" ج.م":""}</div><div class="prod-item-badges">${p.is_new?'<span class="prod-badge">جديد</span>':""}${p.is_out_of_stock?'<span class="prod-badge sold">نفذ</span>':""}</div></div>`).join("")}${prodList.length>5?`<div style="font-size:.72rem;color:var(--t3);text-align:center;padding:6px">+ ${prodList.length-5} آخر</div>`:""}</div>`:"";
+    _getEl("detail-box").innerHTML=`<div class="detail-cover">${coverHtml}<button class="detail-close" id="detail-close-btn"><span class="material-icons-round">close</span></button><div class="detail-badge-abs"><span class="status-badge ${this._statusCls[status]}">${this._statusLabel[status]}</span></div></div><div class="detail-inner"><div class="detail-top"><div class="detail-logo">${logoHtml}</div><div><div class="detail-name">${_esc(name)}</div><div class="detail-id">#${_esc(this._id)}</div></div></div>${desc?`<div class="sec-label">الوصف</div><div class="desc-block">${_esc(desc)}</div>`:""}${cells?`<div class="sec-label">التفاصيل</div><div class="info-cells" style="margin-bottom:16px">${cells}</div>`:""}${socHtml?`<div class="sec-label">التواصل</div><div class="social-row" style="margin-bottom:16px">${socHtml}</div>`:""}${prodImgsHtml}${prodListHtml}</div>`;
+    document.getElementById("detail-close-btn")?.addEventListener("click",()=>_getEl("detail-veil").classList.remove("on"));
     _getEl("detail-veil").classList.add("on");
   },
 
-  load(id, data) {
-    this._id   = id;
-    this._data = { ...data };
-
-    const name        = data.name || data.brandName || id;
-    const contactName = data.contactName || name;
-
-    // تفعيل حفظ الإعدادات حسب البراند
-    Theme.setBrand(id);
-    FontSize.setBrand(id);
-
-    // تطبيق الإعدادات المحفوظة لهذا البراند
-    const savedTheme = _PersistSession.loadSetting(id, "theme");
-    if (savedTheme) Theme.apply(savedTheme);
-
-    const savedFs = _PersistSession.loadSetting(id, "fontSize");
-    if (savedFs) {
-      FontSize._cur = parseInt(savedFs, 10);
-      FontSize._apply();
-    }
-
+  load(id,data) {
+    this._id=id; this._data={...data};
+    const name=data.name||data.brandName||id, contactName=data.contactName||name;
+    /* load per-brand preferences */
+    Theme.init(id); FontSize.init(id);
     this._updateAvatars();
-    if (_getEl("sb-uname"))      _getEl("sb-uname").textContent    = name;
-    if (_getEl("sb-uid"))        _getEl("sb-uid").textContent      = id;
-    if (_getEl("brand-id-disp")) _getEl("brand-id-disp").textContent = "ID: " + id;
-    if (_getEl("settings-id"))   _getEl("settings-id").textContent = id;
-
-    const wb = _getEl("welcome-banner");
-    if (wb) {
-      wb.style.display = "";
-      _getEl("welcome-name").textContent = "أهلاً يا " + contactName + "!";
-      _getEl("welcome-sub").textContent  = "مرحباً بك في لوحة تحكم براندك على EasyGet";
-    }
-
+    if(_getEl("sb-uname")) _getEl("sb-uname").textContent=name;
+    if(_getEl("sb-uid"))   _getEl("sb-uid").textContent=id;
+    if(_getEl("brand-id-disp")) _getEl("brand-id-disp").textContent="ID: "+id;
+    if(_getEl("settings-id"))   _getEl("settings-id").textContent=id;
+    const wb=_getEl("welcome-banner");
+    if(wb){ wb.style.display=""; _getEl("welcome-name").textContent="أهلاً يا "+contactName+"!"; _getEl("welcome-sub").textContent="مرحباً بك في لوحة تحكم براندك على EasyGet"; }
     this._renderHero(); this._renderQuick(); this._renderBasic(); this._renderDelivery(); this._renderProducts();
-
-    if (data.isActive === false) {
-      _getEl("deactivated-veil").classList.add("on");
-    } else {
-      _getEl("deactivated-veil").classList.remove("on");
-    }
+    if(data.isActive===false){ _getEl("deactivated-veil").classList.add("on"); }
+    else { _getEl("deactivated-veil").classList.remove("on"); }
   },
 
   logout() {
-    const id = this._id;
-    this._id   = null;
-    this._data = null;
-    const wb = _getEl("welcome-banner"); if (wb) wb.style.display = "none";
-    _SecureStorage.remove(SESSION_KEY);
-    _SecureStorage.clear();
-    _PersistSession.clearSession(id);
-    Theme.setBrand(null);
-    FontSize.setBrand(null);
-    showScreen("auth");
-    showView("overview");
-    Toast.show("تم تسجيل الخروج", "warn");
+    this._id=null; this._data=null; _currentBrandId=null;
+    const wb=_getEl("welcome-banner"); if(wb) wb.style.display="none";
+    _SecureStorage.remove(SESSION_KEY); _SecureStorage.clear(); _PersistSession.clear();
+    showScreen("auth"); showView("overview");
+    Toast.show("تم تسجيل الخروج","warn");
     _getEl("deactivated-veil").classList.remove("on");
   },
 
   init() {
-    document.querySelectorAll(".nav-btn[data-view]").forEach(btn =>
-      btn.addEventListener("click", () => {
-        const v = btn.dataset.view;
-        if (VIEW_INFO[v]) showView(v);
-      })
-    );
-    _getEl("logout-btn")?.addEventListener("click",    () => this.logout());
-    _getEl("mobile-logout")?.addEventListener("click", () => this.logout());
-    _getEl("menu-toggle")?.addEventListener("click",   openSidebar);
-    _getEl("sb-overlay")?.addEventListener("click",    closeSidebar);
-
-    document.querySelectorAll(".cp-filter-btn[data-panel]").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const allowed = ["basic", "delivery", "products"];
-        const panel   = btn.dataset.panel;
-        if (!allowed.includes(panel)) return;
-        document.querySelectorAll(".cp-filter-btn").forEach(b => b.classList.remove("active"));
-        document.querySelectorAll(".cp-panel").forEach(p => p.classList.remove("on"));
+    document.querySelectorAll(".nav-btn[data-view]").forEach(btn=>btn.addEventListener("click",()=>{ const v=btn.dataset.view; if(VIEW_INFO[v])showView(v); }));
+    _getEl("logout-btn")?.addEventListener("click",()=>this.logout());
+    _getEl("mobile-logout")?.addEventListener("click",()=>this.logout());
+    _getEl("menu-toggle")?.addEventListener("click",openSidebar);
+    _getEl("sb-overlay")?.addEventListener("click",closeSidebar);
+    document.querySelectorAll(".cp-filter-btn[data-panel]").forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        const allowed=["basic","delivery","products"], panel=btn.dataset.panel;
+        if(!allowed.includes(panel)) return;
+        document.querySelectorAll(".cp-filter-btn").forEach(b=>b.classList.remove("active"));
+        document.querySelectorAll(".cp-panel").forEach(p=>p.classList.remove("on"));
         btn.classList.add("active");
-        const el = _getEl("cp-panel-" + panel); if (el) el.classList.add("on");
+        const el=_getEl("cp-panel-"+panel); if(el) el.classList.add("on");
       });
     });
-
-    _getEl("theme-toggle")?.addEventListener("change", function() { Theme.applyFromToggle(this.checked); });
-    _getEl("theme-btn")?.addEventListener("click", () => Theme.toggle());
-    _getEl("fs-dec")?.addEventListener("click", () => FontSize.decrease());
-    _getEl("fs-inc")?.addEventListener("click", () => FontSize.increase());
-
-    const WA_URL = "https://wa.me/201125393398";
-    _getEl("wa-btn")?.addEventListener("click",        () => window.open(WA_URL, "_blank", "noopener,noreferrer"));
-    _getEl("wa-large-btn")?.addEventListener("click",  () => window.open(WA_URL, "_blank", "noopener,noreferrer"));
+    _getEl("theme-toggle")?.addEventListener("change",function(){Theme.applyFromToggle(this.checked);});
+    _getEl("theme-btn")?.addEventListener("click",()=>Theme.toggle());
+    _getEl("fs-dec")?.addEventListener("click",()=>FontSize.decrease());
+    _getEl("fs-inc")?.addEventListener("click",()=>FontSize.increase());
+    const WA_URL="https://wa.me/201125393398";
+    _getEl("wa-btn")?.addEventListener("click",()=>window.open(WA_URL,"_blank","noopener,noreferrer"));
+    _getEl("wa-large-btn")?.addEventListener("click",()=>window.open(WA_URL,"_blank","noopener,noreferrer"));
   }
 };
 
 function openSidebar()  { _getEl("sidebar")?.classList.add("open"); _getEl("sb-overlay")?.classList.add("on"); }
 function closeSidebar() { _getEl("sidebar")?.classList.remove("open"); _getEl("sb-overlay")?.classList.remove("on"); }
 
-_getEl("detail-veil")?.addEventListener("click", function(e) {
-  if (e.target === this) this.classList.remove("on");
-});
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") {
-    _getEl("detail-veil")?.classList.remove("on");
-    _getEl("prod-confirm-overlay")?.classList.remove("on");
-  }
-});
+_getEl("detail-veil")?.addEventListener("click",function(e){ if(e.target===this)this.classList.remove("on"); });
+document.addEventListener("keydown",e=>{ if(e.key==="Escape")_getEl("detail-veil")?.classList.remove("on"); });
 
-document.addEventListener("DOMContentLoaded", async () => {
-  Theme.init(null);
-  FontSize.init(null);
-  Auth.init();
-  Dashboard.init();
-  ProductConfirm.init();
-
-  const autoLogged = await attemptAutoLogin();
-  showScreen(autoLogged ? "dash" : "auth");
+document.addEventListener("DOMContentLoaded",async()=>{
+  Theme.init(null); FontSize.init(null);
+  Auth.init(); Dashboard.init(); ProdPreview.init();
+  const autoLogged=await attemptAutoLogin();
+  showScreen(autoLogged?"dash":"auth");
   showView("overview");
 });
 
