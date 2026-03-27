@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes"/>
 <title>Brandy — EasyGet</title>
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta http-equiv="Referrer-Policy" content="no-referrer">
@@ -433,9 +433,35 @@ button{cursor:pointer}
 .ov-nil{padding:24px 0;text-align:center;color:var(--t3)}
 .ov-nil .material-icons-round{font-size:1.8rem;display:block;margin:0 auto 6px;opacity:.3}
 .ov-nil p{font-size:.74rem}
-@media(max-width:768px){.sidebar{transform:translateX(100%)}.sidebar.open{transform:translateX(0)}.sb-overlay{display:block}.mob-header{display:flex}.main{margin-right:0}.pw{padding:16px}.quick-grid{grid-template-columns:1fr 1fr}.info-cells{grid-template-columns:1fr 1fr}.info-cell.wide{grid-column:span 2}.info-cell.span2{grid-column:span 2}.prod-cards-grid{grid-template-columns:1fr 1fr}.cf-grid{grid-template-columns:1fr}.ov-kpi-row{grid-template-columns:repeat(2,1fr)}.ov-2col{grid-template-columns:1fr}.ov-kpi{border-left:none;border-bottom:1px solid var(--bd)}.ov-kpi:last-child{border-bottom:none}}
-@media(max-width:600px){.pw{padding:12px!important}.view-title{font-size:1.1rem!important}.view-sub{font-size:.7rem!important}.topbar{padding:0 12px!important;height:56px!important}.tb-title{font-size:.85rem!important}.tb-sub{font-size:.65rem!important}.tb-icon-btn{width:32px!important;height:32px!important}.tb-icon-btn .material-icons-round{font-size:1rem!important}.cp-filters{flex-wrap:nowrap!important;overflow-x:auto!important;padding-bottom:8px!important}.cp-filter-btn{padding:6px 12px!important;font-size:.7rem!important;white-space:nowrap!important}.cf-grid{grid-template-columns:1fr!important}.prod-cards-grid{grid-template-columns:1fr!important}.settings-wrap{max-width:100%!important}.set-card{padding:12px 16px!important}.set-lbl{font-size:.8rem!important}.set-desc{font-size:.68rem!important}.copy-id-btn{padding:4px 10px;font-size:.65rem}}
-@media(max-width:480px){.auth-brand-headline{font-size:1.1rem!important}.auth-form-pane{padding:20px 16px!important}.ov-name{font-size:1.1rem}.ov-logo{width:64px;height:64px}.ov-identity{flex-wrap:wrap;gap:8px;padding:0 16px 16px;margin-top:-36px}.ov-open-btn{width:100%;justify-content:center;margin-top:6px}}
+@media (max-width: 768px) {
+  .sidebar{transform:translateX(100%)}.sidebar.open{transform:translateX(0)}.sb-overlay{display:block}.mob-header{display:flex}.main{margin-right:0}.pw{padding:16px}.quick-grid{grid-template-columns:1fr 1fr}.info-cells{grid-template-columns:1fr 1fr}.info-cell.wide{grid-column:span 2}.info-cell.span2{grid-column:span 2}.prod-cards-grid{grid-template-columns:1fr 1fr}.cf-grid{grid-template-columns:1fr}.ov-kpi-row{grid-template-columns:repeat(2,1fr)}.ov-2col{grid-template-columns:1fr}.ov-kpi{border-left:none;border-bottom:1px solid var(--bd)}.ov-kpi:last-child{border-bottom:none}
+}
+@media (max-width: 600px) {
+  .pw{padding:12px!important}.view-title{font-size:1.1rem!important}.view-sub{font-size:.7rem!important}.topbar{padding:0 12px!important;height:56px!important}.tb-title{font-size:.85rem!important}.tb-sub{font-size:.65rem!important}.tb-icon-btn{width:32px!important;height:32px!important}.tb-icon-btn .material-icons-round{font-size:1rem!important}.cp-filters{flex-wrap:nowrap!important;overflow-x:auto!important;padding-bottom:8px!important}.cp-filter-btn{padding:6px 12px!important;font-size:.7rem!important;white-space:nowrap!important}.cf-grid{grid-template-columns:1fr!important}.prod-cards-grid{grid-template-columns:1fr!important}.settings-wrap{max-width:100%!important}.set-card{padding:12px 16px!important}.set-lbl{font-size:.8rem!important}.set-desc{font-size:.68rem!important}.copy-id-btn{padding:4px 10px;font-size:.65rem}
+  body, .pw, .sb-nav, .detail-box, .prod-strip {
+    touch-action: pan-y pinch-zoom;
+    -webkit-overflow-scrolling: touch;
+  }
+  input, select, textarea {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    appearance: none;
+    touch-action: manipulation;
+  }
+  .prod-card, .nav-btn, .icon-btn, .cp-filter-btn, .btn, .whatsapp-btn, .ov-open-btn {
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+  .prod-card-actions {
+    opacity: 1 !important;
+  }
+  .detail-box, .prod-preview-card {
+    max-width: 94vw;
+  }
+}
+@media (max-width: 480px) {
+  .auth-brand-headline{font-size:1.1rem!important}.auth-form-pane{padding:20px 16px!important}.ov-name{font-size:1.1rem}.ov-logo{width:64px;height:64px}.ov-identity{flex-wrap:wrap;gap:8px;padding:0 16px 16px;margin-top:-36px}.ov-open-btn{width:100%;justify-content:center;margin-top:6px}
+}
 </style>
 </head>
 <body>
